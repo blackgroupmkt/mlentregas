@@ -1,0 +1,29 @@
+<svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .body { fill: #272F76; }
+    .wheel { fill: #333; }
+    .handle { fill: #555; }
+    .light { fill: #FFCC00; }
+    .logo { fill: #FFE602; font-family: Arial, sans-serif; font-weight: bold; }
+  </style>
+  
+  <!-- Motorcycle wheels -->
+  <circle class="wheel" cx="40" cy="90" r="20" />
+  <circle class="wheel" cx="160" cy="90" r="20" />
+  
+  <!-- Motorcycle body -->
+  <path class="body" d="M60,90 L140,90 L160,70 L100,50 L60,70 Z" />
+  
+  <!-- Handlebars -->
+  <path class="handle" d="M100,50 L80,40 L75,30" />
+  <circle class="handle" cx="75" cy="30" r="5" />
+  
+  <!-- Headlight -->
+  <circle class="light" cx="160" cy="70" r="6" />
+  
+  <!-- Seat -->
+  <ellipse class="body" cx="100" cy="50" rx="15" ry="5" />
+  
+  <!-- Mercado Livre logo -->
+  <text class="logo" x="70" y="80" font-size="12">MERCADO LIVRE</text>
+</svg>

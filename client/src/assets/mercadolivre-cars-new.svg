@@ -1,0 +1,23 @@
+<svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .car { fill: #272F76; }
+    .car-window { fill: #C0C0FF; }
+    .wheel { fill: #333; }
+    .logo { fill: #FFE602; font-family: Arial, sans-serif; font-weight: bold; }
+  </style>
+  
+  <!-- Car body -->
+  <rect class="car" x="25" y="60" width="150" height="30" rx="10" />
+  <rect class="car" x="45" y="30" width="110" height="30" rx="15" />
+  
+  <!-- Car windows -->
+  <rect class="car-window" x="55" y="35" width="30" height="20" rx="5" />
+  <rect class="car-window" x="95" y="35" width="30" height="20" rx="5" />
+  
+  <!-- Wheels -->
+  <circle class="wheel" cx="55" cy="90" r="15" />
+  <circle class="wheel" cx="145" cy="90" r="15" />
+  
+  <!-- Mercado Livre logo -->
+  <text class="logo" x="50" y="75" font-size="12">MERCADO LIVRE</text>
+</svg>
