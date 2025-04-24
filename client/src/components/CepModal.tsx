@@ -131,15 +131,14 @@ const CepModal: React.FC<CepModalProps> = ({ isOpen, onClose, onConfirm }) => {
           className="relative mx-auto max-w-md w-full bg-white rounded-lg p-8 shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-300"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex flex-col space-y-5">
-            <div className="flex justify-between items-center mb-2">
-              <h2 className="text-2xl font-bold text-gray-900">Bem-vindo ao Mercado Livre</h2>
-              <img 
-                src="https://upload.wikimedia.org/wikipedia/pt/0/04/Logotipo_MercadoLivre.png"
-                alt="Mercado Livre Logo" 
-                className="h-10 w-auto" 
-              />
-            </div>
+          <div className="flex flex-col space-y-5 items-center text-center">
+            <img 
+              src="https://i.ibb.co/GY7bV47/Inserir-um-ti-tulo-3-1-1.webp"
+              alt="Mercado Livre Logo" 
+              className="h-14 w-auto mb-2" 
+            />
+            
+            <h2 className="text-2xl font-bold text-gray-900">Bem-vindo ao Mercado Livre</h2>
             
             <div className="h-px w-full bg-gray-100"></div>
             

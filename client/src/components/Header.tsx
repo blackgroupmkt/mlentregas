@@ -7,7 +7,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link href="/">
           <img 
-            src="https://upload.wikimedia.org/wikipedia/pt/0/04/Logotipo_MercadoLivre.png" 
+            src="https://i.ibb.co/GY7bV47/Inserir-um-ti-tulo-3-1-1.webp" 
             alt="Mercado Livre Logo" 
             className="h-8 cursor-pointer"
           />
