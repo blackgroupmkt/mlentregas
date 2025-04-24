@@ -4,15 +4,15 @@ const Carousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     {
-      url: "https://down-br.img.susercontent.com/file/br-11134258-7r98o-m21cpuqxu6ana5.webp",
+      url: "https://i.ibb.co/cX8hPMr0/1.webp",
       alt: "Mercado Livre Delivery Image 1"
     },
     {
-      url: "https://down-br.img.susercontent.com/file/br-11134258-7r98o-m21cqh315henad.webp",
+      url: "https://i.ibb.co/0RqN2cFt/2-novo.webp",
       alt: "Mercado Livre Delivery Image 2"
     },
     {
-      url: "https://down-br.img.susercontent.com/file/br-11134258-7r98o-m21cqu20650kad.webp",
+      url: "https://i.ibb.co/YTVrgmcj/3.webp",
       alt: "Mercado Livre Delivery Image 3"
     }
   ];

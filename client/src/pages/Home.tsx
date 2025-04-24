@@ -21,21 +21,20 @@ const Home: React.FC = () => {
   } = useAppContext();
   
   useEffect(() => {
+    // Sempre mostrar o modal de CEP na página inicial
+    setShowCepModal(true);
+    
     // Verificar se já temos dados salvos
     const savedCepData = localStorage.getItem('shopee_delivery_cep_data');
-    if (!savedCepData) {
-      // Se não tiver dados, mostrar o modal apenas na página inicial
-      setShowCepModal(true);
-    } else {
+    if (savedCepData) {
       try {
         const parsedData = JSON.parse(savedCepData);
         setCepData(parsedData);
         setUserCheckedCep(true);
-        setShowCepModal(false);
+        // Não escondemos o modal aqui, para que ele sempre apareça na página inicial
       } catch (error) {
         console.error('Erro ao carregar dados de CEP do localStorage:', error);
         localStorage.removeItem('shopee_delivery_cep_data');
-        setShowCepModal(true);
       }
     }
   }, []);
