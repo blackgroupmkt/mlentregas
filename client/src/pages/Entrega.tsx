@@ -856,6 +856,17 @@ const Entrega: React.FC = () => {
                     Copiar Código PIX
                   </Button>
                 </div>
+                
+                {/* Logo do Mercado Pago */}
+                <div className="flex flex-col items-center justify-center mt-3 mb-2">
+                  <p className="text-[10px] text-gray-500 italic mb-1">PAGAMENTO PROCESSADO POR:</p>
+                  <img 
+                    src="https://logodownload.org/wp-content/uploads/2019/06/mercado-pago-logo.png" 
+                    alt="Mercado Pago" 
+                    className="h-4 object-contain"
+                    style={{ maxWidth: '80px' }}
+                  />
+                </div>
               </div>
               
               {/* Instruções */}
