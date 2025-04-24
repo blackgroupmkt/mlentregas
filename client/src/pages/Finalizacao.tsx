@@ -15,7 +15,8 @@ import { useToast } from '@/hooks/use-toast';
 import { LoadingModal } from '@/components/LoadingModal';
 import { useScrollTop } from '@/hooks/use-scroll-top';
 
-import kitEpiImage from '../assets/kit-epi-new.webp';
+// Nova imagem do kit EPI Mercado Livre
+const kitEpiImage = 'https://i.ibb.co/GQJjz9xV/Inserir-um-ti-tulo-1.webp';
 
 const finalizacaoSchema = z.object({
   tamanhoColete: z.enum(['P', 'M', 'G', 'GG']),

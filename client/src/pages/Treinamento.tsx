@@ -1,10 +1,12 @@
 import { FC, useState } from 'react';
 import Header from '../components/Header';
-import kitTreinamentoImage from '@assets/a0e45d2fcc7fdab21ea74890cbd0d45e (1).png';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
 import TreinamentoModal from '../components/TreinamentoModal';
+
+// Nova imagem de treinamento Mercado Livre
+const kitTreinamentoImage = 'https://i.ibb.co/hRkC63LG/Inserir-um-ti-tulo-2.webp';
 
 const Treinamento: FC = () => {
   const [modalOpen, setModalOpen] = useState(false);

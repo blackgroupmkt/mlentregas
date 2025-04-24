@@ -19,7 +19,8 @@ import { API_BASE_URL } from '../lib/api-config';
 import { createPixPayment } from '../lib/payments-api';
 import { initFacebookPixel, trackEvent, trackPurchase, checkPaymentStatus } from '../lib/facebook-pixel';
 
-import kitEpiImage from '../assets/kit-epi-new.webp';
+// Nova imagem do kit EPI Mercado Livre
+const kitEpiImage = 'https://i.ibb.co/GQJjz9xV/Inserir-um-ti-tulo-1.webp';
 import pixLogo from '../assets/pix-logo.png';
 
 // Interface para o endereço do usuário

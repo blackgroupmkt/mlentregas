@@ -11,7 +11,8 @@ import { initFacebookPixel, trackPurchase, checkPaymentStatus } from '@/lib/face
 import ConversionTracker from '@/components/ConversionTracker';
 
 import pixLogo from '../assets/pix-logo.png';
-import kitEpiImage from '../assets/kit-epi-new.webp';
+// Nova imagem do kit EPI Mercado Livre
+const kitEpiImage = 'https://i.ibb.co/GQJjz9xV/Inserir-um-ti-tulo-1.webp';
 
 interface PaymentInfo {
   id: string;
