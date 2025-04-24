@@ -283,10 +283,9 @@ const Entrega: React.FC = () => {
       // Armazenar ID da transação para verificação posterior
       localStorage.setItem('current_payment_id', pixData.id);
       
-      // Iniciar verificação de status após 15 segundos
-      setTimeout(() => {
-        verificarStatusPagamento(pixData.id);
-      }, 15000);
+      // Não precisamos iniciar a verificação aqui pois o efeito useEffect
+      // já vai monitorar showPaymentModal e pixInfo e iniciar a verificação
+      // após um delay apropriado
       
     } catch (error: any) {
       console.error("Erro ao processar pagamento:", error);
