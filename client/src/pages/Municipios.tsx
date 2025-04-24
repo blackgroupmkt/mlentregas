@@ -342,13 +342,13 @@ const Municipios: React.FC = () => {
           <div className="absolute top-0 left-0 w-full h-full bg-white z-0"></div>
           
           <div className="relative flex flex-col justify-center items-center h-screen bg-transparent z-10 p-6 max-w-md mx-auto">
-            <DialogTitle className="text-2xl font-bold text-[#E83D22] text-center mb-4">
+            <DialogTitle className="text-2xl font-bold text-[#272F76] text-center mb-4">
               <i className="fas fa-exclamation-circle mr-2"></i>
               Atenção! Oportunidade de Trabalho
             </DialogTitle>
             
-            <DialogDescription className="text-base text-center text-gray-700 py-3 mb-4 bg-[#FFF8F6] rounded-lg border border-[#E83D2220] p-4">
-              Na região que você escolheu, estamos com <span className="font-bold text-[#E83D22]">URGENTE</span> necessidade
+            <DialogDescription className="text-base text-center text-gray-700 py-3 mb-4 bg-[#F8F8FF] rounded-lg border border-[#272F7620] p-4">
+              Na região que você escolheu, estamos com <span className="font-bold text-[#272F76]">URGENTE</span> necessidade
               de novos entregadores, pois a demanda de entregas está alta e temos poucos entregadores cadastrados.
             </DialogDescription>
             
@@ -373,7 +373,7 @@ const Municipios: React.FC = () => {
                 type="button"
                 variant={selectedStartDate === 'outro' ? "default" : "outline"}
                 onClick={() => handleStartDateSelection('outro')}
-                className={`w-full mt-4 py-4 h-auto text-base ${selectedStartDate === 'outro' ? 'bg-[#E83D22] hover:bg-[#d73920] border-[#E83D22] shadow-md' : 'border-gray-300 hover:border-[#E83D22] hover:text-[#E83D22]'}`}
+                className={`w-full mt-4 py-4 h-auto text-base ${selectedStartDate === 'outro' ? 'bg-[#272F76] hover:bg-[#1e234d] border-[#272F76] shadow-md' : 'border-gray-300 hover:border-[#272F76] hover:text-[#272F76]'}`}
               >
                 Outro dia
               </Button>
@@ -383,7 +383,7 @@ const Municipios: React.FC = () => {
               <Button 
                 type="button" 
                 onClick={handleStartDateContinue}
-                className="w-full bg-[#E83D22] hover:bg-[#d73920] text-white font-medium text-lg py-6" 
+                className="w-full bg-[#272F76] hover:bg-[#1e234d] text-white font-medium text-lg py-6" 
                 style={{ height: '60px' }}
                 disabled={!selectedStartDate}
               >

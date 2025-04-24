@@ -26,8 +26,8 @@ import {
 } from 'lucide-react';
 
 // Cores para uso nos gráficos
-const COLORS = ['#E83D22', '#FF6B3B', '#FF9B64', '#FFCC99', '#3B82F6', '#60A5FA', '#93C5FD'];
-const DANGER_COLORS = ['#E83D22', '#ef4444', '#f87171'];
+const COLORS = ['#272F76', '#303674', '#4352AA', '#6371C7', '#3B82F6', '#60A5FA', '#93C5FD'];
+const DANGER_COLORS = ['#272F76', '#303674', '#4352AA'];
 const SUCCESS_COLORS = ['#10b981', '#34d399', '#6ee7b7'];
 
 interface DashboardStats {
@@ -182,7 +182,7 @@ const Dashboard: React.FC = () => {
     return (
       <div className="flex items-center justify-center h-screen bg-gray-100">
         <div className="text-center">
-          <div className="inline-block h-12 w-12 border-4 border-t-[#E83D22] border-gray-200 rounded-full animate-spin mb-4"></div>
+          <div className="inline-block h-12 w-12 border-4 border-t-[#272F76] border-gray-200 rounded-full animate-spin mb-4"></div>
           <h2 className="text-xl font-semibold">Carregando dashboard...</h2>
         </div>
       </div>
@@ -201,7 +201,7 @@ const Dashboard: React.FC = () => {
           </div>
           <Button 
             onClick={refreshData}
-            className="flex items-center gap-2 bg-[#E83D22] hover:bg-[#d73920]"
+            className="flex items-center gap-2 bg-[#272F76] hover:bg-[#1e234d]"
           >
             <RefreshCw size={16} /> Atualizar
           </Button>
@@ -277,7 +277,7 @@ const Dashboard: React.FC = () => {
                   <Tooltip 
                     formatter={(value: number) => [`${value} visitas`, 'Total']}
                   />
-                  <Bar dataKey="count" fill="#E83D22" />
+                  <Bar dataKey="count" fill="#272F76" />
                 </BarChart>
               </ResponsiveContainer>
             </div>
