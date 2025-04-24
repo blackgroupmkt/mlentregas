@@ -5,15 +5,15 @@ const Carousel: React.FC = () => {
   const slides = [
     {
       url: "https://down-br.img.susercontent.com/file/br-11134258-7r98o-m21cpuqxu6ana5.webp",
-      alt: "Shopee Delivery Image 1"
+      alt: "Mercado Livre Delivery Image 1"
     },
     {
       url: "https://down-br.img.susercontent.com/file/br-11134258-7r98o-m21cqh315henad.webp",
-      alt: "Shopee Delivery Image 2"
+      alt: "Mercado Livre Delivery Image 2"
     },
     {
       url: "https://down-br.img.susercontent.com/file/br-11134258-7r98o-m21cqu20650kad.webp",
-      alt: "Shopee Delivery Image 3"
+      alt: "Mercado Livre Delivery Image 3"
     }
   ];
   

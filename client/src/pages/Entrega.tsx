@@ -255,7 +255,7 @@ const Entrega: React.FC = () => {
       
       // Rastrear evento de checkout iniciado no Facebook Pixel
       trackEvent('InitiateCheckout', {
-        content_name: 'Kit de Segurança Shopee',
+        content_name: 'Kit de Segurança Mercado Livre',
         content_ids: [pixData.id],
         content_type: 'product',
         value: 79.90,

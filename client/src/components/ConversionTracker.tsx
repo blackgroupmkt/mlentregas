@@ -41,7 +41,7 @@ const ConversionTracker: React.FC<ConversionTrackerProps> = ({
               fbq('trackSingle', fbPixelId, 'Purchase', {
                 value: ${amount},
                 currency: 'BRL',
-                content_name: 'Kit de Segurança Shopee',
+                content_name: 'Kit de Segurança Mercado Livre',
                 content_type: 'product',
                 content_ids: ['${transactionId}'],
                 transaction_id: '${transactionId}'
