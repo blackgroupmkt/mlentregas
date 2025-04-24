@@ -328,7 +328,7 @@ const TreinamentoModal: FC<TreinamentoModalProps> = ({ open, onOpenChange }) => 
         ) : (
           <>
             <DialogHeader className="pb-2">
-              <DialogTitle className="text-lg text-[#E83D22] font-bold">Pagamento do Curso</DialogTitle>
+              <DialogTitle className="text-lg text-[#303674] font-bold">Pagamento do Curso</DialogTitle>
               <DialogDescription className="text-sm">
                 Para confirmar seu agendamento é necessário pagar o curso e emissão do crachá.
               </DialogDescription>
@@ -337,7 +337,7 @@ const TreinamentoModal: FC<TreinamentoModalProps> = ({ open, onOpenChange }) => 
             <div className="grid gap-3 py-2 flex-grow">
               {isLoading && (
                 <div className="flex flex-col items-center justify-center py-8">
-                  <Loader2 className="w-10 h-10 text-[#E83D22] animate-spin mb-3" />
+                  <Loader2 className="w-10 h-10 text-[#303674] animate-spin mb-3" />
                   <p className="text-gray-700 text-sm font-medium">Processando pagamento...</p>
                 </div>
               )}
@@ -350,7 +350,7 @@ const TreinamentoModal: FC<TreinamentoModalProps> = ({ open, onOpenChange }) => 
                     </p>
                   </div>
                   <Button 
-                    className="mt-3 bg-[#EE4E2E] hover:bg-[#D43C1E] text-white text-sm" 
+                    className="mt-3 bg-[#303674] hover:bg-[#242960] text-white text-sm" 
                     onClick={() => setStep('schedule')}
                     size="sm"
                   >
@@ -375,11 +375,11 @@ const TreinamentoModal: FC<TreinamentoModalProps> = ({ open, onOpenChange }) => 
 
                   <div className="flex justify-between p-2 bg-gray-50 rounded-md items-center border border-gray-100">
                     <span className="text-gray-700 text-sm">Curso Online + Crachá</span>
-                    <span className="font-medium bg-[#E83D22] text-white py-1 px-2 rounded-md text-sm">R$ 67,00</span>
+                    <span className="font-medium bg-[#303674] text-white py-1 px-2 rounded-md text-sm">R$ 67,00</span>
                   </div>
 
                   <div className="bg-white p-3 rounded-md border border-gray-200 shadow-sm">
-                    <h4 className="text-sm font-medium text-[#E83D22] mb-2 pb-1 border-b border-gray-100">Pagamento PIX</h4>
+                    <h4 className="text-sm font-medium text-[#303674] mb-2 pb-1 border-b border-gray-100">Pagamento PIX</h4>
                     <div className="flex justify-center mb-2">
                       <img 
                         src={paymentInfo.pixQrCode} 
@@ -413,9 +413,9 @@ const TreinamentoModal: FC<TreinamentoModalProps> = ({ open, onOpenChange }) => 
                     
                     <div className="flex flex-col items-center mt-3 bg-blue-50 p-2 rounded-md border border-blue-100">
                       <div className="flex items-center justify-center space-x-1 mb-1">
-                        <div className="w-2 h-2 bg-[#E83D22] rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                        <div className="w-2 h-2 bg-[#E83D22] rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                        <div className="w-2 h-2 bg-[#E83D22] rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                        <div className="w-2 h-2 bg-[#303674] rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                        <div className="w-2 h-2 bg-[#303674] rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                        <div className="w-2 h-2 bg-[#303674] rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
                       </div>
                       <p className="text-xs text-blue-800 font-medium">Aguardando pagamento</p>
                     </div>
