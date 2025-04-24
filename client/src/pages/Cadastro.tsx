@@ -16,8 +16,8 @@ import { LoadingModal } from '@/components/LoadingModal';
 import { useScrollTop } from '@/hooks/use-scroll-top';
 import { VehicleInfoBox } from '@/components/VehicleInfoBox';
 
-import shopeeMotoImage from '../assets/shopee-moto.webp';
-import shopeeCarsImage from '../assets/shopee-cars.webp';
+import mercadoLivreMotoImage from '../assets/mercadolivre-moto.png';
+import mercadoLivreCarsImage from '../assets/mercadolivre-cars.png';
 
 const formSchema = z.object({
   cpf: z.string()
@@ -522,7 +522,7 @@ const Cadastro: React.FC = () => {
                     } rounded-lg transition-colors`}
                   >
                     <div className="mb-3 h-24 flex items-center justify-center">
-                      <img src={shopeeCarsImage} alt="Carros Mercado Livre" className="h-full w-auto object-contain" />
+                      <img src={mercadoLivreCarsImage} alt="Carros Mercado Livre" className="h-full w-auto object-contain" />
                     </div>
                     <span className={`font-medium ${
                       tipoVeiculo === TipoVeiculo.CARRO ? 'text-[#303674]' : 'text-gray-700'
@@ -541,7 +541,7 @@ const Cadastro: React.FC = () => {
                     } rounded-lg transition-colors`}
                   >
                     <div className="mb-3 h-20 flex items-center justify-center">
-                      <img src={shopeeMotoImage} alt="Moto Mercado Livre" className="h-full object-contain" />
+                      <img src={mercadoLivreMotoImage} alt="Moto Mercado Livre" className="h-full object-contain" />
                     </div>
                     <span className={`font-medium ${
                       tipoVeiculo === TipoVeiculo.MOTO ? 'text-[#303674]' : 'text-gray-700'
