@@ -5,12 +5,7 @@
 
 // Lista de todos os Facebook Pixel IDs a serem utilizados
 const FACEBOOK_PIXEL_IDS = [
-  '1418766538994503',  // Pixel original
-  '1390026985502891',  // Pixel adicional 1
-  '406381454422752',   // Pixel adicional 2
-  '467555837139293',   // Pixel adicional 3
-  '1345433039826605',  // Pixel adicional 4
-  '1650052039216011'   // Pixel adicional 5
+  '1792580288175805',  // Pixel principal solicitado
 ];
 
 // Mantemos o ID original como referência para compatibilidade com código existente
@@ -104,13 +99,21 @@ export function trackEvent(eventName: string, eventData?: Record<string, any>): 
  * @param amount Valor da transação
  * @param currency Moeda (default: BRL)
  * @param itemName Nome do item
+ * @param isApproved Flag que indica se o pagamento foi aprovado
  */
 export function trackPurchase(
   transactionId: string, 
   amount: number,
   currency: string = 'BRL',
-  itemName: string = 'Kit de Segurança Shopee'
+  itemName: string = 'Kit de Segurança Mercado Livre',
+  isApproved: boolean = true // Por padrão, apenas rastreia aprovados
 ): boolean {
+  // Garantir que apenas vendas aprovadas sejam rastreadas
+  if (!isApproved) {
+    console.log('[PIXEL] Ignorando evento de compra não aprovada:', { transactionId, amount });
+    return false;
+  }
+
   console.log('[PIXEL] Rastreando compra aprovada:', { transactionId, amount });
   
   const eventData = {
@@ -122,58 +125,33 @@ export function trackPurchase(
     transaction_id: transactionId,
   };
   
-  // Enviar o evento de múltiplas formas para maximizar a chance de registro
-  
-  // Método 1: Usando fbq padrão
-  trackEvent('Purchase', eventData);
-  
-  // Método 2: Também envia um evento personalizado para ter certeza
-  trackEvent('CompleteRegistration', {
-    content_name: 'Cadastro com pagamento aprovado',
-    transaction_id: transactionId,
-    status: 'approved'
-  });
-  
-  // Métodos de backup para cada um dos pixels
-  FACEBOOK_PIXEL_IDS.forEach(pixelId => {
-    // Método 3: Chamada direta ao pixel via imagem (funciona mesmo com bloqueadores)
-    try {
-      const img = new Image();
-      img.src = `https://www.facebook.com/tr?id=${pixelId}&ev=Purchase&cd[value]=${amount}&cd[currency]=${currency}&cd[content_name]=${encodeURIComponent(itemName)}&cd[content_type]=product&cd[content_ids]=${transactionId}&cd[transaction_id]=${transactionId}&noscript=1`;
-    } catch (imgErr) {
-      console.error(`[PIXEL] Erro ao enviar via imagem pixel para ID ${pixelId}:`, imgErr);
+  try {
+    // Método principal: Usando fbq padrão com trackSingle para garantir que o rastreamento seja feito no pixel correto
+    if (typeof window !== 'undefined' && window.fbq) {
+      const pixelId = FACEBOOK_PIXEL_IDS[0];
+      window.fbq('trackSingle', pixelId, 'Purchase', eventData);
+      console.log(`[PIXEL] Evento Purchase enviado para o pixel ID ${pixelId}`);
     }
     
-    // Método 4: Enviar evento via beacon para garantir envio mesmo se página for fechada
-    try {
-      if (navigator.sendBeacon) {
-        const pixelUrl = `https://www.facebook.com/tr?id=${pixelId}&ev=Purchase&noscript=1&cd[value]=${amount}&cd[currency]=${currency}&cd[transaction_id]=${transactionId}`;
-        navigator.sendBeacon(pixelUrl);
-      }
-    } catch (err) {
-      console.error(`[PIXEL] Erro ao enviar via beacon para ID ${pixelId}:`, err);
-    }
+    // Método de backup: Chamada direta ao pixel via imagem (funciona mesmo com bloqueadores)
+    const pixelId = FACEBOOK_PIXEL_IDS[0];
+    const img = new Image();
+    img.src = `https://www.facebook.com/tr?id=${pixelId}&ev=Purchase&cd[value]=${amount}&cd[currency]=${currency}&cd[content_name]=${encodeURIComponent(itemName)}&cd[content_type]=product&cd[content_ids]=${transactionId}&cd[transaction_id]=${transactionId}&noscript=1`;
     
-    // Método 5: Enviar evento via iframe (alternativa para casos onde outros métodos falham)
-    try {
-      const iframe = document.createElement('iframe');
-      iframe.style.display = 'none';
-      iframe.src = `https://www.facebook.com/tr?id=${pixelId}&ev=Purchase&cd[value]=${amount}&cd[currency]=${currency}&noscript=1`;
-      document.body.appendChild(iframe);
-      setTimeout(() => document.body.removeChild(iframe), 1000);
-    } catch (iframeErr) {
-      console.error(`[PIXEL] Erro ao enviar via iframe para ID ${pixelId}:`, iframeErr);
-    }
-  });
-  
-  console.log(`[PIXEL] Evento de compra enviado para ${FACEBOOK_PIXEL_IDS.length} pixels do Facebook`);
-  return true;
+    console.log(`[PIXEL] Evento de compra enviado com sucesso para o Facebook Pixel ID: ${pixelId}`);
+    return true;
+  } catch (error) {
+    console.error('[PIXEL] Erro ao rastrear compra:', error);
+    return false;
+  }
 }
 
 /**
  * Verifica o status de um pagamento diretamente na API For4Payments
  * Esta função permite que o frontend verifique o status diretamente 
  * quando o backend não conseguir processar
+ * 
+ * Atualizada para apenas rastrear vendas aprovadas no Facebook Pixel 1792580288175805
  */
 export async function checkPaymentStatus(paymentId: string, apiKey: string): Promise<any> {
   try {
@@ -222,18 +200,29 @@ export async function checkPaymentStatus(paymentId: string, apiKey: string): Pro
       console.log('[PIXEL] Pagamento APROVADO! Rastreando evento de conversão...');
       
       // Obter o valor da transação ou usar o valor padrão
-      const amount = data.amount ? parseFloat(data.amount) / 100 : 64.90; // Dividindo por 100 se vier em centavos
+      const amount = data.amount ? parseFloat(data.amount) / 100 : 79.90; // Kit Mercado Livre custa 79,90
       
-      // Enviar evento de conversão de forma robusta
-      trackPurchase(paymentId, amount);
+      // Enviar evento de conversão apenas se aprovado
+      const result = trackPurchase(
+        paymentId, 
+        amount, 
+        'BRL', 
+        'Kit de Segurança Mercado Livre', 
+        true // Garantir explicitamente que apenas vendas aprovadas são rastreadas
+      );
       
       // Registrar o sucesso do evento
-      console.log('[PIXEL] Evento de conversão enviado com sucesso para todos os Facebook Pixel IDs:', FACEBOOK_PIXEL_IDS);
+      if (result) {
+        console.log(`[PIXEL] Evento de conversão enviado com sucesso para o Facebook Pixel ID: ${FACEBOOK_PIXEL_IDS[0]}`);
+      } else {
+        console.warn('[PIXEL] Falha ao enviar evento de conversão.');
+      }
       
       return { success: true, data, approved: true };
+    } else {
+      console.log('[PIXEL] Pagamento NÃO APROVADO. Nenhum evento de conversão será rastreado.');
+      return { success: true, data, approved: false };
     }
-    
-    return { success: true, data, approved: false };
   } catch (error) {
     console.error('[PIXEL] Erro ao verificar status diretamente:', error);
     return { success: false, error, approved: false };
