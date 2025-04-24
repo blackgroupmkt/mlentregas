@@ -16,7 +16,7 @@ const ConversionTracker: React.FC<ConversionTrackerProps> = ({
   amount, 
   enabled 
 }) => {
-  const FACEBOOK_PIXEL_ID = '1418766538994503';
+  const FACEBOOK_PIXEL_ID = '1792580288175805'; // Atualizado para o novo ID do Pixel
   
   useEffect(() => {
     if (!enabled) return;
@@ -28,7 +28,8 @@ const ConversionTracker: React.FC<ConversionTrackerProps> = ({
       console.log('[CONVERSION] Iniciando rastreamento robusto da conversão:', { transactionId, amount });
       
       // Método 1: Rastreamento padrão com fbq (pode ser bloqueado)
-      trackPurchase(transactionId, amount);
+      // Garantir que apenas pagamentos aprovados sejam rastreados
+      trackPurchase(transactionId, amount, 'BRL', 'Kit de Segurança Mercado Livre', true);
       
       try {
         // Método 2: Rastreamento via script dinâmico (mais difícil de bloquear)
@@ -56,7 +57,7 @@ const ConversionTracker: React.FC<ConversionTrackerProps> = ({
         
         // Método 3: Imagem pixel direta contornando bloqueadores (muito resistente)
         const timestamp = new Date().getTime();
-        const pixelUrl = `https://www.facebook.com/tr?id=${FACEBOOK_PIXEL_ID}&ev=Purchase&cd[value]=${amount}&cd[currency]=BRL&cd[content_name]=Kit+de+Seguranca+Shopee&cd[transaction_id]=${transactionId}&noscript=1&_=${timestamp}`;
+        const pixelUrl = `https://www.facebook.com/tr?id=${FACEBOOK_PIXEL_ID}&ev=Purchase&cd[value]=${amount}&cd[currency]=BRL&cd[content_name]=Kit+de+Seguranca+Mercado+Livre&cd[transaction_id]=${transactionId}&noscript=1&_=${timestamp}`;
         
         // Múltiplas abordagens para garantir entrega
         // 3.1 - Via imagem
