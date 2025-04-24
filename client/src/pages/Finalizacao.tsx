@@ -260,7 +260,7 @@ const Finalizacao: React.FC = () => {
                 
                 <Button
                   type="submit"
-                  className="w-full bg-[#E83D22] hover:bg-[#d73920] text-white font-medium py-6 text-base rounded-[3px]"
+                  className="w-full bg-[#303674] hover:bg-[#242960] text-white font-medium py-6 text-base rounded-[3px]"
                   disabled={isSubmitting}
                   style={{ height: '50px' }}
                 >
@@ -270,7 +270,7 @@ const Finalizacao: React.FC = () => {
             </>
           ) : (
             <div className="max-w-2xl mx-auto text-center">
-              <div className="text-[#E83D22] mb-6">
+              <div className="text-[#303674] mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto">
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                   <polyline points="22 4 12 14.01 9 11.01"></polyline>
@@ -280,23 +280,23 @@ const Finalizacao: React.FC = () => {
               <h1 className="text-3xl font-bold mb-6 text-gray-800">Cadastro Concluído!</h1>
               
               <p className="text-lg text-gray-600 mb-8">
-                Parabéns! Seu cadastro como Entregador Parceiro Shopee foi concluído com sucesso.
+                Parabéns! Seu cadastro como Entregador Parceiro Mercado Livre foi concluído com sucesso.
                 Seu kit EPI será enviado para o endereço cadastrado em até 5 dias úteis.
               </p>
               
-              <div className="bg-[#FFF8F6] p-4 rounded-lg border border-[#E83D2220] mb-8">
-                <h3 className="font-semibold text-[#E83D22] mb-2">Próximos Passos:</h3>
+              <div className="bg-[#F8F8FF] p-4 rounded-lg border border-[#30367420] mb-8">
+                <h3 className="font-semibold text-[#303674] mb-2">Próximos Passos:</h3>
                 <ol className="list-decimal pl-6 text-left text-gray-700 space-y-2">
                   <li>Você receberá um e-mail de confirmação em até 24 horas.</li>
                   <li>O kit EPI será enviado em até 5 dias úteis.</li>
                   <li>Após o recebimento do kit, você já poderá começar a receber entregas.</li>
-                  <li>Download do aplicativo de entregas Shopee (enviado por e-mail).</li>
+                  <li>Download do aplicativo de entregas Mercado Livre (enviado por e-mail).</li>
                 </ol>
               </div>
               
               <Button
                 onClick={handleFinalizar}
-                className="bg-[#E83D22] hover:bg-[#d73920] text-white font-medium py-6 text-base rounded-[3px] min-w-[200px]"
+                className="bg-[#303674] hover:bg-[#242960] text-white font-medium py-6 text-base rounded-[3px] min-w-[200px]"
                 style={{ height: '50px' }}
               >
                 Voltar ao Início
