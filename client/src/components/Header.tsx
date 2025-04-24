@@ -12,11 +12,47 @@ const Header: React.FC = () => {
             className="h-8 cursor-pointer"
           />
         </Link>
-        <div className="hamburger-menu cursor-pointer">
-          <div className="hamburger-line w-[16px] h-[3px] bg-[#303674] my-1 transition-all duration-400"></div>
-          <div className="hamburger-line w-[20px] h-[3px] bg-[#303674] my-1 transition-all duration-400"></div>
-          <div className="hamburger-line w-[24px] h-[3px] bg-[#303674] my-1 transition-all duration-400"></div>
-        </div>
+        <button className="nav-header-menu-switch" aria-label="Menu do usuário" aria-expanded="false" disabled style={{
+          background: "none",
+          border: "none",
+          padding: "0",
+          width: "24px",
+          height: "24px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "default"
+        }}>
+          <span style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100%",
+            height: "100%"
+          }}>
+            <span className="hamburger-top-bread" style={{
+              display: "block",
+              width: "16px",
+              height: "3px",
+              backgroundColor: "#303674",
+              marginBottom: "4px"
+            }}></span>
+            <span className="hamburger-patty" style={{
+              display: "block",
+              width: "20px",
+              height: "3px",
+              backgroundColor: "#303674",
+              marginBottom: "4px"
+            }}></span>
+            <span className="hamburger-bottom-bread" style={{
+              display: "block",
+              width: "24px",
+              height: "3px",
+              backgroundColor: "#303674"
+            }}></span>
+          </span>
+        </button>
       </div>
     </header>
   );
