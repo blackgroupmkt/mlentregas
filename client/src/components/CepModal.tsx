@@ -133,11 +133,11 @@ const CepModal: React.FC<CepModalProps> = ({ isOpen, onClose, onConfirm }) => {
         >
           <div className="flex flex-col space-y-5">
             <div className="flex justify-between items-center mb-2">
-              <h2 className="text-2xl font-bold text-gray-900">Bem-vindo à Shopee</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Bem-vindo ao Mercado Livre</h2>
               <img 
-                src="https://logospng.org/download/shopee/logo-shopee-icon-1024.png"
-                alt="Shopee Logo" 
-                className="h-10 w-10" 
+                src="https://upload.wikimedia.org/wikipedia/pt/0/04/Logotipo_MercadoLivre.png"
+                alt="Mercado Livre Logo" 
+                className="h-10 w-auto" 
               />
             </div>
             
@@ -174,7 +174,7 @@ const CepModal: React.FC<CepModalProps> = ({ isOpen, onClose, onConfirm }) => {
             
             {isLoading && (
               <div className="flex justify-center py-2">
-                <div className="h-6 w-6 rounded-full border-3 border-t-transparent border-[#E83D22] animate-spin"></div>
+                <div className="h-6 w-6 rounded-full border-3 border-t-transparent border-[#303674] animate-spin"></div>
               </div>
             )}
             
@@ -185,9 +185,9 @@ const CepModal: React.FC<CepModalProps> = ({ isOpen, onClose, onConfirm }) => {
             )}
             
             {locationData && (
-              <div className="bg-[#FFF8F6] p-4 rounded-md border border-[#FFE0D9]">
+              <div className="bg-[#F8F8FF] p-4 rounded-md border border-[#D9DAFF]">
                 <div className="flex items-center">
-                  <div className="mr-3 text-[#E83D22]">
+                  <div className="mr-3 text-[#303674]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                       <circle cx="12" cy="10" r="3"></circle>
@@ -216,7 +216,7 @@ const CepModal: React.FC<CepModalProps> = ({ isOpen, onClose, onConfirm }) => {
               )}
               
               <Button
-                className="w-full bg-[#E83D22] hover:bg-[#d73920] text-white font-medium py-6 text-base rounded-md"
+                className="w-full bg-[#303674] hover:bg-[#242960] text-white font-medium py-6 text-base rounded-md"
                 onClick={handleConfirm}
                 disabled={!locationData}
                 style={{ height: '50px' }}

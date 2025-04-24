@@ -585,7 +585,7 @@ const Cadastro: React.FC = () => {
                       <button 
                         type="button"
                         onClick={handleClearPlate}
-                        className="text-xs px-2 py-1 bg-red-50 text-red-600 rounded hover:bg-red-100 transition-colors"
+                        className="text-xs px-2 py-1 bg-blue-50 text-[#303674] rounded hover:bg-blue-100 transition-colors"
                       >
                         NÃO É MEU VEÍCULO
                       </button>
