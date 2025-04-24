@@ -86,7 +86,7 @@ const Treinamento: FC = () => {
                   <div className="bg-red-50 p-4 rounded-md border border-red-200 mb-4">
                     <h5 className="text-red-700 font-bold text-md mb-2">⚠️ ATENÇÃO: TREINAMENTO OBRIGATÓRIO</h5>
                     <p className="text-sm text-red-800">
-                      Este treinamento é <strong>OBRIGATÓRIO</strong> para começar a trabalhar como Entregador Shopee. 
+                      Este treinamento é <strong>OBRIGATÓRIO</strong> para começar a trabalhar como Entregador Mercado Livre. 
                       Sem a conclusão do curso online de 3 horas:
                     </p>
                     <ul className="list-disc pl-5 mt-2 space-y-1 text-sm text-red-800">
@@ -116,13 +116,13 @@ const Treinamento: FC = () => {
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="text-gray-700 font-medium">
-                    Módulo 1: Introdução à Shopee e à sua plataforma de entregas
+                    Módulo 1: Introdução ao Mercado Livre e à sua plataforma de entregas
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-600">
                     <ul className="list-disc pl-5 space-y-1">
-                      <li>História e crescimento da Shopee no Brasil</li>
-                      <li>Como funciona o ecossistema de entregas Shopee</li>
-                      <li>Benefícios de ser um Motorista Parceiro Shopee</li>
+                      <li>História e crescimento do Mercado Livre no Brasil</li>
+                      <li>Como funciona o ecossistema de entregas Mercado Livre</li>
+                      <li>Benefícios de ser um Motorista Parceiro Mercado Livre</li>
                       <li>Estrutura de ganhos e oportunidades de crescimento</li>
                     </ul>
                   </AccordionContent>
@@ -130,7 +130,7 @@ const Treinamento: FC = () => {
                 
                 <AccordionItem value="item-2">
                   <AccordionTrigger className="text-gray-700 font-medium">
-                    Módulo 2: Utilizando o aplicativo de entregas Shopee
+                    Módulo 2: Utilizando o aplicativo de entregas Mercado Livre
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-600">
                     <ul className="list-disc pl-5 space-y-1">
@@ -149,7 +149,7 @@ const Treinamento: FC = () => {
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-600">
                     <ul className="list-disc pl-5 space-y-1">
-                      <li>Protocolo de coleta no centro de distribuição Shopee</li>
+                      <li>Protocolo de coleta no centro de distribuição Mercado Livre</li>
                       <li>Verificação e confirmação de encomendas</li>
                       <li>Melhores práticas para acondicionamento de pacotes</li>
                       <li>Procedimentos de entrega e validação</li>
@@ -165,7 +165,7 @@ const Treinamento: FC = () => {
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-600">
                     <ul className="list-disc pl-5 space-y-1">
-                      <li>Uso correto do kit de segurança Shopee</li>
+                      <li>Uso correto do kit de segurança Mercado Livre</li>
                       <li>Prevenção de acidentes durante o transporte</li>
                       <li>Direção defensiva e economia de combustível</li>
                       <li>Manutenção preventiva do veículo</li>
@@ -180,7 +180,7 @@ const Treinamento: FC = () => {
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-600">
                     <ul className="list-disc pl-5 space-y-1">
-                      <li>Etiqueta profissional e representação da marca Shopee</li>
+                      <li>Etiqueta profissional e representação da marca Mercado Livre</li>
                       <li>Comunicação eficaz com clientes</li>
                       <li>Lidar com situações desafiadoras</li>
                       <li>Política de não-confrontação</li>
@@ -206,19 +206,19 @@ const Treinamento: FC = () => {
                 </AccordionItem>
               </Accordion>
               
-              <div className="mt-8 bg-orange-50 p-4 rounded-md border border-orange-200">
-                <h4 className="text-md font-bold text-orange-700 mb-2">Certificação Shopee para Entregadores</h4>
-                <p className="text-orange-700 text-sm mb-2">
-                  Ao completar o treinamento, você receberá o Certificado Oficial Shopee para Entregadores, 
+              <div className="mt-8 bg-[#F8F8FF] p-4 rounded-md border border-[#272F7620]">
+                <h4 className="text-md font-bold text-[#272F76] mb-2">Certificação Mercado Livre para Entregadores</h4>
+                <p className="text-[#272F76] text-sm mb-2">
+                  Ao completar o treinamento, você receberá o Certificado Oficial Mercado Livre para Entregadores, 
                   que é <strong>OBRIGATÓRIO</strong> para:
                 </p>
-                <ul className="list-disc pl-5 space-y-1 text-sm text-orange-700">
-                  <li>Receber as credenciais de acesso ao aplicativo Shopee Entregas</li>
+                <ul className="list-disc pl-5 space-y-1 text-sm text-[#272F76]">
+                  <li>Receber as credenciais de acesso ao aplicativo Mercado Livre Entregas</li>
                   <li>Ativar seu cadastro como entregador oficial</li>
                   <li>Começar a receber solicitações de entrega na sua região</li>
                   <li>Ter seu primeiro pagamento processado</li>
                 </ul>
-                <p className="text-orange-700 text-sm mt-2 font-bold">
+                <p className="text-[#272F76] text-sm mt-2 font-bold">
                   Atenção: Sem a conclusão do treinamento de 3 horas, seu acesso ao sistema permanecerá bloqueado.
                 </p>
               </div>
@@ -236,7 +236,7 @@ const Treinamento: FC = () => {
               </p>
               <p className="text-red-600 text-sm font-bold mb-4">
                 ATENÇÃO: Sem a conclusão do treinamento, seu cadastro permanecerá pendente e você não poderá
-                iniciar suas atividades como entregador Shopee.
+                iniciar suas atividades como entregador Mercado Livre.
               </p>
               <Button 
                 className="bg-[#272F76] hover:bg-[#1e234d] text-white font-medium py-3 px-8"
