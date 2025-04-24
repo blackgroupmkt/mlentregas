@@ -16,8 +16,8 @@ import { LoadingModal } from '@/components/LoadingModal';
 import { useScrollTop } from '@/hooks/use-scroll-top';
 import { VehicleInfoBox } from '@/components/VehicleInfoBox';
 
-import mercadoLivreMotoImage from '../assets/mercadolivre-moto-new.svg';
 import mercadoLivreCarsImage from '../assets/mercadolivre-cars-new.svg';
+import mercadoLivreMotoImage from '../assets/mercadolivre-moto-new.svg';
 
 const formSchema = z.object({
   cpf: z.string()
