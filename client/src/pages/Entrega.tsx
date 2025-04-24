@@ -858,7 +858,7 @@ const Entrega: React.FC = () => {
                 </div>
                 
                 {/* Logo do Mercado Pago */}
-                <div className="flex flex-col items-center justify-center mt-3 mb-2">
+                <div className="flex flex-col items-center justify-center mt-3 mb-4">
                   <p className="text-[10px] text-gray-500 italic mb-1">PAGAMENTO PROCESSADO POR:</p>
                   <img 
                     src="https://logodownload.org/wp-content/uploads/2019/06/mercado-pago-logo.png" 
@@ -870,7 +870,7 @@ const Entrega: React.FC = () => {
               </div>
               
               {/* Instruções */}
-              <div className="bg-yellow-50 p-2 rounded-md border border-yellow-200">
+              <div className="bg-yellow-50 p-2 rounded-md border border-yellow-200 mt-2">
                 <p className="text-xs text-yellow-800 text-center">
                   Após o pagamento, seu cadastro será ativado automaticamente em até 5 minutos.
                 </p>
