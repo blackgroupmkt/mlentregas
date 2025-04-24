@@ -198,17 +198,17 @@ const Municipios: React.FC = () => {
     <div className="bg-white min-h-screen flex flex-col">
       <Header />
       
-      <div className="w-full bg-[#EE4E2E] py-1 px-6 flex items-center relative overflow-hidden">
+      <div className="w-full bg-[#FFE602] py-1 px-6 flex items-center relative overflow-hidden">
         {/* Meia-lua no canto direito */}
-        <div className="absolute right-0 top-0 bottom-0 w-32 h-full rounded-l-full bg-[#E83D22]"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 h-full rounded-l-full bg-[#FFD100]"></div>
         
         <div className="flex items-center relative z-10">
-          <div className="text-white mr-3">
-            <i className="fas fa-chevron-right text-3xl font-black" style={{color: 'white'}}></i>
+          <div className="text-[#303674] mr-3">
+            <i className="fas fa-chevron-right text-3xl font-black" style={{color: '#303674'}}></i>
           </div>
           <div className="leading-none">
-            <h1 className="text-base font-bold text-white mb-0">Motorista Parceiro</h1>
-            <p className="text-white text-sm mt-0" style={{transform: 'translateY(-2px)'}}>Shopee</p>
+            <h1 className="text-base font-bold text-[#303674] mb-0">Motorista Parceiro</h1>
+            <p className="text-[#303674] text-sm mt-0" style={{transform: 'translateY(-2px)'}}>Mercado Livre</p>
           </div>
         </div>
       </div>
@@ -217,7 +217,7 @@ const Municipios: React.FC = () => {
         <div className="w-full mx-auto p-6 mb-8">
           <h1 className="text-2xl font-bold text-center mb-2 text-gray-800">Escolha onde retirar os pedidos</h1>
           <p className="text-center text-gray-600 mb-6">
-            Selecione as cidades onde você pode retirar os pedidos no Centro de distribuição da Shopee. Em cada cidade abaixo está localizado um centro de distribuição e de acordo com a sua disponibilidade pode estar escolhendo mais de 1 centro para retirar os pedidos.
+            Selecione as cidades onde você pode retirar os pedidos no Centro de distribuição do Mercado Livre. Em cada cidade abaixo está localizado um centro de distribuição e de acordo com a sua disponibilidade pode estar escolhendo mais de 1 centro para retirar os pedidos.
           </p>
           
           <div className="mb-4 flex justify-between items-center">
@@ -241,7 +241,7 @@ const Municipios: React.FC = () => {
                   <div 
                     key={index} 
                     className={`p-2 sm:p-4 border rounded-[3px] cursor-pointer hover:bg-gray-50 transition-colors ${
-                      municipio.selecionado ? 'border-[#EE4E2E] bg-[#FFF8F6]' : 'border-gray-200'
+                      municipio.selecionado ? 'border-[#303674] bg-[#F8F8FF]' : 'border-gray-200'
                     }`}
                     onClick={() => toggleMunicipio(index)}
                   >
@@ -252,7 +252,7 @@ const Municipios: React.FC = () => {
                       <Checkbox
                         checked={municipio.selecionado}
                         onCheckedChange={() => toggleMunicipio(index)}
-                        className="h-4 w-4 sm:h-5 sm:w-5 border-gray-300 rounded data-[state=checked]:bg-[#EE4E2E] data-[state=checked]:text-white"
+                        className="h-4 w-4 sm:h-5 sm:w-5 border-gray-300 rounded data-[state=checked]:bg-[#303674] data-[state=checked]:text-white"
                       />
                     </div>
                   </div>
@@ -263,20 +263,20 @@ const Municipios: React.FC = () => {
           
           {/* Estatísticas de entregas */}
           {municipios.filter(m => m.selecionado).length > 0 && (
-            <Card className="mt-6 mb-6 p-4 border border-[#E83D2240] bg-[#FFF8F6]">
+            <Card className="mt-6 mb-6 p-4 border border-[#30367440] bg-[#F8F8FF]">
               <div className="flex flex-col">
                 <h3 className="font-medium text-gray-800 mb-2">Previsão de Entregas</h3>
                 <div className="text-sm text-gray-700">
                   <p>Quantidade média diária de entregas que podem ser destinadas a você:</p>
-                  <div className="mt-2 p-3 bg-white rounded-[3px] border border-[#E83D2220]">
-                    <div className="text-center mb-3 bg-[#FFF8F6] p-2 rounded-[3px]">
-                      <span className="font-medium text-[#E83D22]">A Shopee paga R$ 12,00 por entrega realizada</span>
+                  <div className="mt-2 p-3 bg-white rounded-[3px] border border-[#30367420]">
+                    <div className="text-center mb-3 bg-[#F8F8FF] p-2 rounded-[3px]">
+                      <span className="font-medium text-[#303674]">O Mercado Livre paga R$ 12,00 por entrega realizada</span>
                     </div>
                     
                     {municipios.filter(m => m.selecionado).map((m, index) => (
                       <div key={index} className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-2 last:mb-0">
                         <span className="font-medium md:col-span-1">{m.nome}:</span>
-                        <span className="font-bold text-[#E83D22] md:col-span-1">
+                        <span className="font-bold text-[#303674] md:col-span-1">
                           {m.entregas} <span className="font-normal text-gray-700">entregas</span>
                         </span>
                         <span className="font-medium text-green-600 md:col-span-1">
@@ -286,9 +286,9 @@ const Municipios: React.FC = () => {
                     ))}
                     
                     {municipios.filter(m => m.selecionado).length > 1 && (
-                      <div className="mt-3 pt-3 border-t border-[#E83D2220] grid grid-cols-1 md:grid-cols-3 gap-2">
+                      <div className="mt-3 pt-3 border-t border-[#30367420] grid grid-cols-1 md:grid-cols-3 gap-2">
                         <span className="font-semibold">Total diário:</span>
-                        <span className="font-bold text-[#E83D22]">
+                        <span className="font-bold text-[#303674]">
                           {municipios
                             .filter(m => m.selecionado)
                             .reduce((acc, m) => acc + m.entregas, 0)} <span className="font-normal text-gray-700">entregas</span>
@@ -310,7 +310,7 @@ const Municipios: React.FC = () => {
             <Button
               type="button"
               onClick={handleSubmit}
-              className="w-full bg-[#E83D22] hover:bg-[#d73920] text-white font-medium py-6 text-base rounded-[3px]"
+              className="w-full bg-[#303674] hover:bg-[#242960] text-white font-medium py-6 text-base rounded-[3px]"
               disabled={submitting}
               style={{ height: '50px' }}
             >
