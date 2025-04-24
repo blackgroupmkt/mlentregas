@@ -16,8 +16,9 @@ import { LoadingModal } from '@/components/LoadingModal';
 import { useScrollTop } from '@/hooks/use-scroll-top';
 import { VehicleInfoBox } from '@/components/VehicleInfoBox';
 
-import mercadoLivreCarsImage from '../assets/mercadolivre-cars-new.svg';
-import mercadoLivreMotoImage from '../assets/mercadolivre-moto-new.svg';
+// Usando URLs diretas das imagens conforme solicitado
+const mercadoLivreCarsImage = "https://i.ibb.co/yvfZksh/carrosmle.png";
+const mercadoLivreMotoImage = "https://i.ibb.co/0RsGrvhF/motomle.png";
 
 const formSchema = z.object({
   cpf: z.string()
