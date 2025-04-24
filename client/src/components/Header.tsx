@@ -12,46 +12,44 @@ const Header: React.FC = () => {
             className="h-8 cursor-pointer"
           />
         </Link>
-        <button className="nav-header-menu-switch" aria-label="Menu do usuário" aria-expanded="false" disabled style={{
-          background: "none",
-          border: "none",
-          padding: "0",
-          width: "24px",
-          height: "24px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "default"
-        }}>
-          <span style={{
+        <button 
+          className="nav-header-menu-switch" 
+          aria-label="Menu do usuário" 
+          aria-expanded="false" 
+          disabled 
+          style={{
+            background: "#FFE602",
+            border: "none",
+            padding: "8px 10px",
+            width: "40px",
+            height: "40px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            width: "100%",
-            height: "100%"
-          }}>
-            <span className="hamburger-top-bread" style={{
-              display: "block",
-              width: "16px",
-              height: "3px",
-              backgroundColor: "#303674",
-              marginBottom: "4px"
-            }}></span>
-            <span className="hamburger-patty" style={{
-              display: "block",
-              width: "20px",
-              height: "3px",
-              backgroundColor: "#303674",
-              marginBottom: "4px"
-            }}></span>
-            <span className="hamburger-bottom-bread" style={{
-              display: "block",
-              width: "24px",
-              height: "3px",
-              backgroundColor: "#303674"
-            }}></span>
-          </span>
+            cursor: "default",
+            gap: "4px",
+            boxSizing: "border-box"
+          }}
+        >
+          <span className="hamburger-top-bread" style={{
+            display: "block",
+            width: "20px",
+            height: "2px",
+            backgroundColor: "#303674"
+          }}></span>
+          <span className="hamburger-patty" style={{
+            display: "block",
+            width: "20px",
+            height: "2px",
+            backgroundColor: "#303674"
+          }}></span>
+          <span className="hamburger-bottom-bread" style={{
+            display: "block",
+            width: "20px",
+            height: "2px",
+            backgroundColor: "#303674"
+          }}></span>
         </button>
       </div>
     </header>
