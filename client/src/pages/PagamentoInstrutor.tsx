@@ -10,17 +10,17 @@ const PagamentoInstrutor: FC = () => {
     <div className="bg-white min-h-screen flex flex-col">
       <Header />
       
-      <div className="w-full bg-[#EE4E2E] py-1 px-6 flex items-center relative overflow-hidden">
+      <div className="w-full bg-[#FFE602] py-1 px-6 flex items-center relative overflow-hidden">
         {/* Meia-lua no canto direito */}
-        <div className="absolute right-0 top-0 bottom-0 w-32 h-full rounded-l-full bg-[#E83D22]"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 h-full rounded-l-full bg-[#FFD100]"></div>
         
         <div className="flex items-center relative z-10">
-          <div className="text-white mr-3">
-            <i className="fas fa-chevron-right text-3xl font-black" style={{color: 'white'}}></i>
+          <div className="text-[#303674] mr-3">
+            <i className="fas fa-chevron-right text-3xl font-black" style={{color: '#303674'}}></i>
           </div>
           <div className="leading-none">
-            <h1 className="text-base font-bold text-white mb-0">Pagamento de Honorários</h1>
-            <p className="text-white text-sm mt-0" style={{transform: 'translateY(-2px)'}}>Shopee</p>
+            <h1 className="text-base font-bold text-[#303674] mb-0">Pagamento de Honorários</h1>
+            <p className="text-[#303674] text-sm mt-0" style={{transform: 'translateY(-2px)'}}>Mercado Livre</p>
           </div>
         </div>
       </div>
@@ -28,8 +28,8 @@ const PagamentoInstrutor: FC = () => {
       <div className="flex-grow container mx-auto px-4 py-8">
         <div className="w-full max-w-4xl mx-auto">
           <div className="bg-white shadow-md rounded-lg overflow-hidden mb-8">
-            <div className="bg-[#FFF8F6] p-4 border-b border-[#E83D2220]">
-              <h3 className="font-semibold text-[#E83D22]">Honorários do Treinamento e Credenciais</h3>
+            <div className="bg-[#F8F8FF] p-4 border-b border-[#272F7620]">
+              <h3 className="font-semibold text-[#272F76]">Honorários do Treinamento e Credenciais</h3>
             </div>
             <div className="p-6">
               <div className="bg-green-50 p-4 rounded-md border border-green-200 mb-6">
@@ -60,7 +60,7 @@ const PagamentoInstrutor: FC = () => {
                     </div>
                     
                     <div className="flex justify-between p-3 bg-gray-50 rounded-md">
-                      <span className="text-gray-700">Emissão de Crachá Oficial Shopee</span>
+                      <span className="text-gray-700">Emissão de Crachá Oficial Mercado Livre</span>
                       <span className="font-medium">R$ 29,90</span>
                     </div>
                     
@@ -97,7 +97,7 @@ const PagamentoInstrutor: FC = () => {
                 
                 <div className="pt-4">
                   <Button 
-                    className="w-full bg-[#EE4E2E] hover:bg-[#D43C1E] text-white font-medium py-6 text-lg"
+                    className="w-full bg-[#303674] hover:bg-[#242960] text-white font-medium py-6 text-lg"
                     onClick={() => setLocation('/checkout')}
                   >
                     Pagar Agora com PIX
