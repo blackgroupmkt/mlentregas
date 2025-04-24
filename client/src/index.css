@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Definição da fonte Proxima Nova do Mercado Livre */
+@font-face {
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 300;
+  src: url('https://http2.mlstatic.com/ui/webfonts/v3.0.0/proxima-nova/proximanova-light.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://http2.mlstatic.com/ui/webfonts/v3.0.0/proxima-nova/proximanova-regular.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 600;
+  src: url('https://http2.mlstatic.com/ui/webfonts/v3.0.0/proxima-nova/proximanova-semibold.woff2') format('woff2');
+  font-display: swap;
+}
+
 /* Estilização personalizada da barra de rolagem */
 .custom-scrollbar::-webkit-scrollbar {
   width: 8px;
@@ -101,7 +126,7 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
   }
 }
 
