@@ -103,17 +103,17 @@ const Finalizacao: React.FC = () => {
     <div className="bg-white min-h-screen flex flex-col">
       <Header />
       
-      <div className="w-full bg-[#EE4E2E] py-1 px-6 flex items-center relative overflow-hidden">
+      <div className="w-full bg-[#FFE602] py-1 px-6 flex items-center relative overflow-hidden">
         {/* Meia-lua no canto direito */}
-        <div className="absolute right-0 top-0 bottom-0 w-32 h-full rounded-l-full bg-[#E83D22]"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 h-full rounded-l-full bg-[#FFD100]"></div>
         
         <div className="flex items-center relative z-10">
-          <div className="text-white mr-3">
-            <i className="fas fa-chevron-right text-3xl font-black" style={{color: 'white'}}></i>
+          <div className="text-[#303674] mr-3">
+            <i className="fas fa-chevron-right text-3xl font-black" style={{color: '#303674'}}></i>
           </div>
           <div className="leading-none">
-            <h1 className="text-base font-bold text-white mb-0">Motorista Parceiro</h1>
-            <p className="text-white text-sm mt-0" style={{transform: 'translateY(-2px)'}}>Shopee</p>
+            <h1 className="text-base font-bold text-[#303674] mb-0">Motorista Parceiro</h1>
+            <p className="text-[#303674] text-sm mt-0" style={{transform: 'translateY(-2px)'}}>Mercado Livre</p>
           </div>
         </div>
       </div>
@@ -126,26 +126,26 @@ const Finalizacao: React.FC = () => {
               
               <div className="mb-8">
                 <Card className="overflow-hidden">
-                  <div className="bg-[#FFF8F6] p-4 border-b border-[#E83D2220]">
-                    <h3 className="font-semibold text-[#E83D22]">Equipamento de Proteção Individual (EPI)</h3>
+                  <div className="bg-[#F8F8FF] p-4 border-b border-[#30367420]">
+                    <h3 className="font-semibold text-[#303674]">Equipamento de Proteção Individual (EPI)</h3>
                   </div>
                   <div className="p-6">
                     <div className="flex flex-col md:flex-row gap-6 items-center">
                       <div className="w-full md:w-2/5">
                         <img 
                           src={kitEpiImage} 
-                          alt="Kit EPI Shopee" 
+                          alt="Kit EPI Mercado Livre" 
                           className="w-full rounded-lg"
                         />
                       </div>
                       <div className="w-full md:w-3/5">
                         <h4 className="text-lg font-medium mb-3">Kit Completo de Segurança</h4>
                         <p className="text-gray-600 mb-4">
-                          Para garantir sua segurança durante as entregas, a Shopee exige que todos os entregadores 
+                          Para garantir sua segurança durante as entregas, o Mercado Livre exige que todos os entregadores 
                           utilizem equipamentos de proteção individual. O kit inclui:
                         </p>
                         <ul className="list-disc pl-5 mb-4 space-y-1 text-gray-700">
-                          <li>2 Coletes refletivos com identificação Shopee (laranja e amarelo)</li>
+                          <li>2 Coletes refletivos com identificação Mercado Livre (azul e amarelo)</li>
                           <li>Par de luvas de proteção</li>
                           <li>Botas de segurança antiderrapantes</li>
                         </ul>
@@ -216,8 +216,8 @@ const Finalizacao: React.FC = () => {
                           onClick={() => handleShoeSize(size)}
                           className={`py-2 px-4 ${
                             selectedShoeSize === size 
-                              ? 'bg-[#E83D22] text-white border-[#E83D22] hover:bg-[#d73920]' 
-                              : 'border-gray-300 hover:border-[#E83D22] hover:text-[#E83D22]'
+                              ? 'bg-[#303674] text-white border-[#303674] hover:bg-[#242960]' 
+                              : 'border-gray-300 hover:border-[#303674] hover:text-[#303674]'
                           }`}
                         >
                           {size}
@@ -239,7 +239,7 @@ const Finalizacao: React.FC = () => {
                   <Checkbox
                     id="termoUso" 
                     {...register('termoUso')}
-                    className={errors.termoUso ? 'border-red-500' : 'border-[#E83D22] data-[state=checked]:bg-[#E83D22] data-[state=checked]:text-white'}
+                    className={errors.termoUso ? 'border-red-500' : 'border-[#303674] data-[state=checked]:bg-[#303674] data-[state=checked]:text-white'}
                     onCheckedChange={() => handleTermsToggle()}
                   />
                   <div className="grid gap-1.5 leading-none" onClick={() => handleTermsToggle()}>
@@ -247,7 +247,7 @@ const Finalizacao: React.FC = () => {
                       htmlFor="termoUso"
                       className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
                     >
-                      Concordo com os termos de uso e política de segurança da Shopee
+                      Concordo com os termos de uso e política de segurança do Mercado Livre
                     </label>
                     <p className="text-sm text-gray-500">
                       Declaro que usarei os equipamentos de proteção durante todas as entregas.
