@@ -13,17 +13,17 @@ const Treinamento: FC = () => {
     <div className="bg-white min-h-screen flex flex-col">
       <Header />
       
-      <div className="w-full bg-[#EE4E2E] py-1 px-6 flex items-center relative overflow-hidden">
+      <div className="w-full bg-[#FFE602] py-1 px-6 flex items-center relative overflow-hidden">
         {/* Meia-lua no canto direito */}
-        <div className="absolute right-0 top-0 bottom-0 w-32 h-full rounded-l-full bg-[#E83D22]"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 h-full rounded-l-full bg-[#FFD100]"></div>
         
         <div className="flex items-center relative z-10">
-          <div className="text-white mr-3">
-            <i className="fas fa-chevron-right text-3xl font-black" style={{color: 'white'}}></i>
+          <div className="text-[#303674] mr-3">
+            <i className="fas fa-chevron-right text-3xl font-black" style={{color: '#303674'}}></i>
           </div>
           <div className="leading-none">
-            <h1 className="text-base font-bold text-white mb-0">Treinamento Online</h1>
-            <p className="text-white text-sm mt-0" style={{transform: 'translateY(-2px)'}}>Shopee</p>
+            <h1 className="text-base font-bold text-[#303674] mb-0">Treinamento Online</h1>
+            <p className="text-[#303674] text-sm mt-0" style={{transform: 'translateY(-2px)'}}>Mercado Livre</p>
           </div>
         </div>
       </div>
@@ -32,8 +32,8 @@ const Treinamento: FC = () => {
         <div className="w-full max-w-4xl mx-auto">
           {/* Status de Aprovação */}
           <div className="bg-white shadow-md rounded-lg overflow-hidden mb-8">
-            <div className="bg-[#FFF8F6] p-4 border-b border-[#E83D2220]">
-              <h3 className="font-semibold text-[#E83D22]">Status do Cadastro</h3>
+            <div className="bg-[#F8F8FF] p-4 border-b border-[#272F7620]">
+              <h3 className="font-semibold text-[#272F76]">Status do Cadastro</h3>
             </div>
             <div className="p-6">
               <div className="flex flex-col md:flex-row gap-6">
@@ -52,9 +52,9 @@ const Treinamento: FC = () => {
                   
                   <div className="mt-6">
                     <p className="text-sm text-gray-700 font-medium">
-                      Sua jornada como Motorista Parceiro Shopee está quase completa! <strong>PARA FINALIZAR O PROCESSO 
+                      Sua jornada como Motorista Parceiro Mercado Livre está quase completa! <strong>PARA FINALIZAR O PROCESSO 
                       E LIBERAR SEU ACESSO AO SISTEMA</strong>, você precisa concluir o treinamento online oficial 
-                      de 3 horas da Shopee para entregadores. 
+                      de 3 horas do Mercado Livre para entregadores. 
                       <span className="block mt-2 text-red-600">O treinamento é OBRIGATÓRIO para receber suas credenciais e acessar o aplicativo.</span>
                     </p>
                   </div>
@@ -65,8 +65,8 @@ const Treinamento: FC = () => {
           
           {/* Sobre o treinamento */}
           <div className="bg-white shadow-md rounded-lg overflow-hidden mb-8">
-            <div className="bg-[#FFF8F6] p-4 border-b border-[#E83D2220]">
-              <h3 className="font-semibold text-[#E83D22]">Treinamento Online Shopee</h3>
+            <div className="bg-[#F8F8FF] p-4 border-b border-[#272F7620]">
+              <h3 className="font-semibold text-[#272F76]">Treinamento Online Mercado Livre</h3>
             </div>
             <div className="p-6">
               <div className="flex flex-col md:flex-row gap-6 items-center">
@@ -81,7 +81,7 @@ const Treinamento: FC = () => {
                   <h4 className="text-lg font-medium mb-3">Curso Online de 3 horas</h4>
                   <p className="text-gray-600 mb-4">
                     Este treinamento essencial capacita você com todos os conhecimentos e habilidades 
-                    necessários para atuar como um parceiro Shopee de excelência.
+                    necessários para atuar como um parceiro Mercado Livre de excelência.
                   </p>
                   <div className="bg-red-50 p-4 rounded-md border border-red-200 mb-4">
                     <h5 className="text-red-700 font-bold text-md mb-2">⚠️ ATENÇÃO: TREINAMENTO OBRIGATÓRIO</h5>
@@ -97,7 +97,7 @@ const Treinamento: FC = () => {
                     </ul>
                   </div>
                   <Button 
-                    className="w-full bg-[#EE4E2E] hover:bg-[#D43C1E] text-white font-medium py-3"
+                    className="w-full bg-[#272F76] hover:bg-[#1e234d] text-white font-medium py-3"
                     onClick={() => setModalOpen(true)}
                   >
                     Iniciar Treinamento Agora
@@ -109,8 +109,8 @@ const Treinamento: FC = () => {
           
           {/* Conteúdo do treinamento */}
           <div className="bg-white shadow-md rounded-lg overflow-hidden mb-8">
-            <div className="bg-[#FFF8F6] p-4 border-b border-[#E83D2220]">
-              <h3 className="font-semibold text-[#E83D22]">O que você vai aprender</h3>
+            <div className="bg-[#F8F8FF] p-4 border-b border-[#272F7620]">
+              <h3 className="font-semibold text-[#272F76]">O que você vai aprender</h3>
             </div>
             <div className="p-6">
               <Accordion type="single" collapsible className="w-full">
@@ -226,9 +226,9 @@ const Treinamento: FC = () => {
           </div>
           
           {/* Banner de conclusão */}
-          <div className="bg-[#FFF8F6] p-6 rounded-lg border border-[#E83D2220] mb-8">
+          <div className="bg-[#F8F8FF] p-6 rounded-lg border border-[#272F7620] mb-8">
             <div className="text-center">
-              <h3 className="text-[#E83D22] text-xl font-bold mb-3">Ganhe dinheiro sendo um Motorista Parceiro Shopee</h3>
+              <h3 className="text-[#272F76] text-xl font-bold mb-3">Ganhe dinheiro sendo um Motorista Parceiro Mercado Livre</h3>
               <p className="text-gray-700 mb-4">
                 Estamos felizes em tê-lo como parte da nossa equipe de entregadores. <strong>Lembre-se:</strong> 
                 você precisa concluir este treinamento obrigatório de 3 horas para liberar seu acesso ao aplicativo 
@@ -239,7 +239,7 @@ const Treinamento: FC = () => {
                 iniciar suas atividades como entregador Shopee.
               </p>
               <Button 
-                className="bg-[#EE4E2E] hover:bg-[#D43C1E] text-white font-medium py-3 px-8"
+                className="bg-[#272F76] hover:bg-[#1e234d] text-white font-medium py-3 px-8"
                 onClick={() => setModalOpen(true)}
               >
                 Iniciar Treinamento Agora
