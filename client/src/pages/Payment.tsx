@@ -145,7 +145,7 @@ const Payment: React.FC = () => {
                 }
                 
                 // Rastrear a compra com diferentes abordagens para garantir recebimento
-                trackPurchase(id, amount);
+                trackPurchase(id, amount, 'BRL', 'Kit de Segurança Mercado Livre', true);
                 
                 // Também notifica o backend para fins de registro
                 try {
@@ -205,7 +205,7 @@ const Payment: React.FC = () => {
                     amount = rawAmount > 1000 ? rawAmount / 100 : rawAmount;
                   }
                   
-                  trackPurchase(id, amount);
+                  trackPurchase(id, amount, 'BRL', 'Kit de Segurança Mercado Livre', true);
                   
                   // Notificar o usuário
                   toast({
@@ -243,7 +243,7 @@ const Payment: React.FC = () => {
               // Se aprovado, garantir que o evento seja enviado do frontend
               if (backendData.status === 'APPROVED') {
                 initFacebookPixel();
-                trackPurchase(id, 79.90);
+                trackPurchase(id, 79.90, 'BRL', 'Kit de Segurança Mercado Livre', true);
               }
             }
           } catch (backendError) {

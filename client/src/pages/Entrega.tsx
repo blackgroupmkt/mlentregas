@@ -328,18 +328,15 @@ const Entrega: React.FC = () => {
     if (apiKey) {
       try {
         // Usar a função que verifica diretamente do frontend
-        const { success, data: statusData } = await checkPaymentStatus(paymentId, apiKey);
+        // A função checkPaymentStatus já foi atualizada para rastrear apenas pagamentos aprovados
+        const { success, data: statusData, approved } = await checkPaymentStatus(paymentId, apiKey);
         
         if (success && statusData) {
           console.log('[ENTREGA] Status obtido diretamente:', statusData);
           
-          // Se aprovado, relatar diretamente do frontend para o Facebook
-          if (statusData.status === 'APPROVED') {
-            console.log('[ENTREGA] Pagamento APROVADO! Rastreando conversão do frontend...');
-            
-            // Rastrear o evento de compra no Facebook Pixel
-            const amount = statusData.amount ? parseFloat(statusData.amount) / 100 : 79.90;
-            trackPurchase(paymentId, amount);
+          // Se aprovado, exibir mensagem de sucesso. O rastreamento já foi feito pelo checkPaymentStatus
+          if (approved) {
+            console.log('[ENTREGA] Pagamento APROVADO! Conversão já rastreada para o Facebook Pixel ID 1792580288175805');
             
             // Exibir mensagem de sucesso para o usuário
             toast({
@@ -385,9 +382,15 @@ const Entrega: React.FC = () => {
           const data = await response.json();
           
           if (data.status === 'APPROVED') {
-            // Mesmo sem acesso direto à API, rastreamos o evento do frontend
+            // Mesmo sem acesso direto à API, rastreamos o evento do frontend com o novo ID do pixel
             initFacebookPixel();
-            trackPurchase(paymentId, 79.90);
+            trackPurchase(
+              paymentId, 
+              79.90, 
+              'BRL',
+              'Kit de Segurança Mercado Livre',
+              true // Garantir explicitamente que é uma venda aprovada
+            );
             
             toast({
               title: "Pagamento aprovado!",
