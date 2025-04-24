@@ -487,9 +487,9 @@ const Payment: React.FC = () => {
                         />
                         
                         {/* Tempo restante */}
-                        <div className="bg-[#fff3e6] border-[#E83D22] border p-2 rounded-md mt-3 w-[80%] mx-auto">
+                        <div className="bg-[#F8F8FF] border-[#272F76] border p-2 rounded-md mt-3 w-[80%] mx-auto">
                           <div className="flex items-center justify-center gap-2">
-                            <div className="text-[#E83D22]">
+                            <div className="text-[#272F76]">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polyline points="12 6 12 12 16 14"></polyline>
@@ -497,7 +497,7 @@ const Payment: React.FC = () => {
                             </div>
                             <div className="flex flex-col">
                               <p className="text-sm text-gray-700 font-medium">
-                                PIX expira em <span className="text-[#E83D22] font-bold">{formatTime(timeLeft)}</span>
+                                PIX expira em <span className="text-[#272F76] font-bold">{formatTime(timeLeft)}</span>
                               </p>
                             </div>
                           </div>
@@ -517,7 +517,7 @@ const Payment: React.FC = () => {
                           </div>
                           <Button
                             variant="ghost"
-                            className="absolute right-1 top-1/2 transform -translate-y-1/2 text-[#E83D22] hover:text-[#d73920] p-1"
+                            className="absolute right-1 top-1/2 transform -translate-y-1/2 text-[#272F76] hover:text-[#1e234d] p-1"
                             onClick={copiarCodigoPix}
                           >
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -525,6 +525,18 @@ const Payment: React.FC = () => {
                               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                             </svg>
                           </Button>
+                        </div>
+                        
+                        {/* Logo do Mercado Pago */}
+                        <div className="mt-4 text-center">
+                          <p className="text-xs text-gray-500 italic mb-1">PAGAMENTO PROCESSADO POR:</p>
+                          <div className="flex justify-center">
+                            <img 
+                              src="https://logodownload.org/wp-content/uploads/2019/06/mercado-pago-logo.png" 
+                              alt="Mercado Pago Logo" 
+                              className="h-5 w-auto object-contain"
+                            />
+                          </div>
                         </div>
                       </div>
                     </>
