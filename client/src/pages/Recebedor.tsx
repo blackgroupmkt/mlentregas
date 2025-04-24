@@ -169,17 +169,17 @@ const Recebedor: React.FC = () => {
     <div className="bg-white min-h-screen flex flex-col">
       <Header />
       
-      <div className="w-full bg-[#EE4E2E] py-1 px-6 flex items-center relative overflow-hidden">
+      <div className="w-full bg-[#FFE602] py-1 px-6 flex items-center relative overflow-hidden">
         {/* Meia-lua no canto direito */}
-        <div className="absolute right-0 top-0 bottom-0 w-32 h-full rounded-l-full bg-[#E83D22]"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 h-full rounded-l-full bg-[#FFDF00]"></div>
         
         <div className="flex items-center relative z-10">
-          <div className="text-white mr-3">
-            <i className="fas fa-chevron-right text-3xl font-black" style={{color: 'white'}}></i>
+          <div className="mr-3">
+            <i className="fas fa-chevron-right text-3xl font-black" style={{color: '#303674'}}></i>
           </div>
           <div className="leading-none">
-            <h1 className="text-base font-bold text-white mb-0">Motorista Parceiro</h1>
-            <p className="text-white text-sm mt-0" style={{transform: 'translateY(-2px)'}}>Shopee</p>
+            <h1 className="text-base font-bold text-[#303674] mb-0">Motorista Parceiro</h1>
+            <p className="text-[#303674] text-sm mt-0" style={{transform: 'translateY(-2px)'}}>Mercado Livre</p>
           </div>
         </div>
       </div>
@@ -194,7 +194,7 @@ const Recebedor: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <Card 
-              className={`cursor-pointer transition-all p-6 ${metodo === MetodoPagamento.PIX ? 'border-[#E83D22] border-2 bg-[#FFF8F6]' : 'border-gray-200 hover:border-[#E83D2280]'}`}
+              className={`cursor-pointer transition-all p-6 ${metodo === MetodoPagamento.PIX ? 'border-[#303674] border-2 bg-[#F8F8FF]' : 'border-gray-200 hover:border-[#30367480]'}`}
               onClick={() => setMetodo(MetodoPagamento.PIX)}
             >
               <div className="flex flex-col items-center text-center">
@@ -214,11 +214,11 @@ const Recebedor: React.FC = () => {
             </Card>
             
             <Card 
-              className={`cursor-pointer transition-all p-6 ${metodo === MetodoPagamento.TED ? 'border-[#E83D22] border-2 bg-[#FFF8F6]' : 'border-gray-200 hover:border-[#E83D2280]'}`}
+              className={`cursor-pointer transition-all p-6 ${metodo === MetodoPagamento.TED ? 'border-[#303674] border-2 bg-[#F8F8FF]' : 'border-gray-200 hover:border-[#30367480]'}`}
               onClick={() => setMetodo(MetodoPagamento.TED)}
             >
               <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-[#E83D22] rounded-full flex items-center justify-center mb-4 text-white">
+                <div className="w-16 h-16 bg-[#303674] rounded-full flex items-center justify-center mb-4 text-white">
                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="2" y="5" width="20" height="14" rx="2"></rect>
                     <line x1="2" y1="10" x2="22" y2="10"></line>
@@ -276,7 +276,7 @@ const Recebedor: React.FC = () => {
                 
                 <Button
                   type="submit"
-                  className="w-full bg-[#E83D22] hover:bg-[#d73920] text-white font-medium py-6 text-base rounded-[3px]"
+                  className="w-full bg-[#303674] hover:bg-[#242960] text-white font-medium py-6 text-base rounded-[3px]"
                   disabled={isSubmitting}
                   style={{ height: '50px' }}
                 >
@@ -365,7 +365,7 @@ const Recebedor: React.FC = () => {
                 
                 <Button
                   type="submit"
-                  className="w-full bg-[#E83D22] hover:bg-[#d73920] text-white font-medium py-6 text-base rounded-[3px]"
+                  className="w-full bg-[#303674] hover:bg-[#242960] text-white font-medium py-6 text-base rounded-[3px]"
                   disabled={isSubmitting}
                   style={{ height: '50px' }}
                 >
