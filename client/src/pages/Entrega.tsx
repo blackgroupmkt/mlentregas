@@ -720,13 +720,13 @@ const Entrega: React.FC = () => {
           <DialogHeader className="pb-1">
             <DialogTitle className="text-center text-sm">Pagamento do Kit de Segurança</DialogTitle>
             <DialogDescription className="text-center text-xs">
-              Finalize o pagamento para ativar seu cadastro Shopee
+              Finalize o pagamento para ativar seu cadastro Mercado Livre
             </DialogDescription>
           </DialogHeader>
           
           {isLoading ? (
             <div className="flex flex-col items-center justify-center py-8">
-              <div className="text-[#E83D22]">
+              <div className="text-[#303674]">
                 <Spinner size="lg" />
               </div>
               <p className="mt-4 text-gray-600">Gerando QR Code para pagamento...</p>
@@ -738,13 +738,13 @@ const Entrega: React.FC = () => {
                 <div className="flex-shrink-0">
                   <img 
                     src={kitEpiImage} 
-                    alt="Kit EPI Shopee" 
+                    alt="Kit EPI Mercado Livre" 
                     className="w-16 rounded-md"
                   />
                 </div>
                 <div className="flex-grow">
                   <h3 className="text-sm font-medium text-gray-800">Kit de Segurança Oficial</h3>
-                  <p className="text-md font-bold text-[#E83D22]">R$ 79,90</p>
+                  <p className="text-md font-bold text-[#303674]">R$ 79,90</p>
                   
                   <div className="w-full mt-1">
                     <p className="text-xs text-gray-600">
@@ -759,7 +759,7 @@ const Entrega: React.FC = () => {
               
               {/* Status de pagamento com spinner */}
               <div className="flex items-center justify-center gap-2 py-1">
-                <div className="text-[#E83D22] animate-spin">
+                <div className="text-[#303674] animate-spin">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 12a9 9 0 1 1-6.219-8.56" />
                   </svg>
@@ -785,9 +785,9 @@ const Entrega: React.FC = () => {
                 </div>
                 
                 {/* Tempo restante */}
-                <div className="bg-[#fff3e6] border-[#E83D22] border p-2 rounded-md mt-1 w-[75%] mx-auto">
+                <div className="bg-[#F8F8FF] border-[#303674] border p-2 rounded-md mt-1 w-[75%] mx-auto">
                   <div className="flex items-center justify-center gap-2">
-                    <div className="text-[#E83D22]">
+                    <div className="text-[#303674]">
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
@@ -795,7 +795,7 @@ const Entrega: React.FC = () => {
                     </div>
                     <div className="flex flex-col">
                       <p className="text-xs text-gray-700 font-medium">
-                        PIX expira em <span className="text-[#E83D22] font-bold">{formatTime(timeLeft)}</span>
+                        PIX expira em <span className="text-[#303674] font-bold">{formatTime(timeLeft)}</span>
                       </p>
                     </div>
                   </div>
@@ -815,7 +815,7 @@ const Entrega: React.FC = () => {
                   </div>
                   <Button
                     variant="ghost"
-                    className="absolute right-1 top-1/2 transform -translate-y-1/2 text-[#E83D22] hover:text-[#d73920] p-1"
+                    className="absolute right-1 top-1/2 transform -translate-y-1/2 text-[#303674] hover:text-[#262c60] p-1"
                     onClick={copiarCodigoPix}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -828,9 +828,9 @@ const Entrega: React.FC = () => {
                 <div className="mt-2">
                   <Button
                     onClick={copiarCodigoPix}
-                    className="bg-[#E83D22] hover:bg-[#d73920] text-white font-medium py-1 w-full text-xs rounded-[3px] shadow-md transform active:translate-y-0.5 transition-transform"
+                    className="bg-[#303674] hover:bg-[#262c60] text-white font-medium py-1 w-full text-xs rounded-[3px] shadow-md transform active:translate-y-0.5 transition-transform"
                     style={{ 
-                      boxShadow: "0 4px 0 0 #c23218",
+                      boxShadow: "0 4px 0 0 #1f2550",
                       border: "none",
                       position: "relative",
                       top: "0"
@@ -855,7 +855,7 @@ const Entrega: React.FC = () => {
       {/* Modal de aviso ao tentar fechar */}
       <Dialog open={showCloseWarning} onOpenChange={setShowCloseWarning}>
         <DialogContent className="sm:max-w-md p-6 flex flex-col gap-4">
-          <div className="flex items-center justify-center text-[#E83D22] mb-2">
+          <div className="flex items-center justify-center text-[#303674] mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="12" y1="8" x2="12" y2="12"></line>
@@ -863,7 +863,7 @@ const Entrega: React.FC = () => {
             </svg>
           </div>
           
-          <DialogTitle className="text-center text-base text-[#E83D22]">Atenção!</DialogTitle>
+          <DialogTitle className="text-center text-base text-[#303674]">Atenção!</DialogTitle>
           
           <div className="text-center space-y-2">
             <p className="text-sm text-gray-800 font-medium">
@@ -876,9 +876,9 @@ const Entrega: React.FC = () => {
           
           <Button 
             onClick={() => setShowCloseWarning(false)}
-            className="mt-4 bg-[#E83D22] hover:bg-[#d73920] py-2 text-white font-medium shadow-lg transform active:translate-y-0.5 transition-transform"
+            className="mt-4 bg-[#303674] hover:bg-[#262c60] py-2 text-white font-medium shadow-lg transform active:translate-y-0.5 transition-transform"
             style={{ 
-              boxShadow: "0 4px 0 0 #c23218",
+              boxShadow: "0 4px 0 0 #1f2550",
               border: "none"
             }}
           >
