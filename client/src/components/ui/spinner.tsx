@@ -15,10 +15,11 @@ export const Spinner = ({ className, size = "md", ...props }: SpinnerProps) => {
   return (
     <div
       className={cn(
-        "animate-spin rounded-full border-solid border-current border-t-transparent",
+        "animate-spin rounded-full border-solid border-[#272F76] border-t-transparent",
         sizeClass[size],
         className
       )}
+      style={{ borderColor: "#272F76", borderTopColor: "transparent" }}
       {...props}
     >
       <span className="sr-only">Carregando...</span>

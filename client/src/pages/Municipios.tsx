@@ -185,7 +185,7 @@ const Municipios: React.FC = () => {
         <Header />
         <div className="flex-grow container mx-auto px-4 py-8 flex items-center justify-center">
           <div className="text-center">
-            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[#EE4E2E] border-r-transparent"></div>
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[#272F76] border-r-transparent"></div>
             <p className="mt-4 text-gray-600">Carregando municípios...</p>
           </div>
         </div>
@@ -362,7 +362,7 @@ const Municipios: React.FC = () => {
                     type="button"
                     variant={selectedStartDate === date.value ? "default" : "outline"}
                     onClick={() => handleStartDateSelection(date.value)}
-                    className={`py-4 px-2 h-auto text-base ${selectedStartDate === date.value ? 'bg-[#E83D22] hover:bg-[#d73920] border-[#E83D22] shadow-md' : 'border-gray-300 hover:border-[#E83D22] hover:text-[#E83D22]'}`}
+                    className={`py-4 px-2 h-auto text-base ${selectedStartDate === date.value ? 'bg-[#272F76] hover:bg-[#1e234d] border-[#272F76] shadow-md' : 'border-gray-300 hover:border-[#272F76] hover:text-[#272F76]'}`}
                   >
                     {date.full}
                   </Button>
