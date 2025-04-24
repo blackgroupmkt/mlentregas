@@ -517,7 +517,7 @@ const Cadastro: React.FC = () => {
                     onClick={() => setTipoVeiculo(TipoVeiculo.CARRO)}
                     className={`flex flex-col items-center justify-center p-6 ${
                       tipoVeiculo === TipoVeiculo.CARRO
-                        ? 'border-[#E83D22] border-3 bg-[#FFF8F6]'
+                        ? 'border-[#303674] border-3 bg-[#F8F8FF]'
                         : 'border-gray-200 border-2 bg-white hover:bg-gray-50'
                     } rounded-lg transition-colors`}
                   >
@@ -525,7 +525,7 @@ const Cadastro: React.FC = () => {
                       <img src={shopeeCarsImage} alt="Carros Mercado Livre" className="h-full w-auto object-contain" />
                     </div>
                     <span className={`font-medium ${
-                      tipoVeiculo === TipoVeiculo.CARRO ? 'text-[#E83D22]' : 'text-gray-700'
+                      tipoVeiculo === TipoVeiculo.CARRO ? 'text-[#303674]' : 'text-gray-700'
                     }`}>
                       Carro
                     </span>
@@ -536,7 +536,7 @@ const Cadastro: React.FC = () => {
                     onClick={() => setTipoVeiculo(TipoVeiculo.MOTO)}
                     className={`flex flex-col items-center justify-center p-6 ${
                       tipoVeiculo === TipoVeiculo.MOTO
-                        ? 'border-[#E83D22] border-3 bg-[#FFF8F6]'
+                        ? 'border-[#303674] border-3 bg-[#F8F8FF]'
                         : 'border-gray-200 border-2 bg-white hover:bg-gray-50'
                     } rounded-lg transition-colors`}
                   >
@@ -544,7 +544,7 @@ const Cadastro: React.FC = () => {
                       <img src={shopeeMotoImage} alt="Moto Mercado Livre" className="h-full object-contain" />
                     </div>
                     <span className={`font-medium ${
-                      tipoVeiculo === TipoVeiculo.MOTO ? 'text-[#E83D22]' : 'text-gray-700'
+                      tipoVeiculo === TipoVeiculo.MOTO ? 'text-[#303674]' : 'text-gray-700'
                     }`}>
                       Moto
                     </span>
@@ -569,7 +569,7 @@ const Cadastro: React.FC = () => {
                   />
                   {isLoadingVehicleInfo && (
                     <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                      <div className="animate-spin h-4 w-4 border-2 border-[#E83D22] border-t-transparent rounded-full"></div>
+                      <div className="animate-spin h-4 w-4 border-2 border-[#303674] border-t-transparent rounded-full"></div>
                     </div>
                   )}
                 </div>
