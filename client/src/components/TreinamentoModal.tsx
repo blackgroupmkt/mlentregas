@@ -207,28 +207,28 @@ const TreinamentoModal: FC<TreinamentoModalProps> = ({ open, onOpenChange }) => 
         {step === 'schedule' ? (
           <>
             <DialogHeader>
-              <DialogTitle className="text-xl text-[#E83D22] font-bold">Agende seu Treinamento</DialogTitle>
+              <DialogTitle className="text-xl text-[#303674] font-bold">Agende seu Treinamento</DialogTitle>
               <DialogDescription>
-                Escolha uma data e horário para realizar seu treinamento online obrigatório com um instrutor oficial da Shopee.
+                Escolha uma data e horário para realizar seu treinamento online obrigatório com um instrutor oficial do Mercado Livre.
               </DialogDescription>
             </DialogHeader>
 
             <div className="grid gap-6 py-4 flex-grow">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-orange-100 text-[#E83D22]">
+                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-[#303674]">
                   <span className="text-xl font-bold">1</span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-gray-800">Instrutor Oficial Shopee</h3>
+                  <h3 className="text-lg font-semibold text-gray-800">Instrutor Oficial Mercado Livre</h3>
                   <p className="text-sm text-gray-600">
                     O treinamento será realizado por videochamada com um instrutor certificado que irá ensinar tudo o que você 
-                    precisa saber para começar a trabalhar como entregador Shopee.
+                    precisa saber para começar a trabalhar como entregador Mercado Livre.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-orange-100 text-[#E83D22]">
+                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-[#303674]">
                   <span className="text-xl font-bold">2</span>
                 </div>
                 <div className="flex-1">
@@ -263,7 +263,7 @@ const TreinamentoModal: FC<TreinamentoModalProps> = ({ open, onOpenChange }) => 
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-orange-100 text-[#E83D22]">
+                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-[#303674]">
                   <span className="text-xl font-bold">3</span>
                 </div>
                 <div className="flex-1">
@@ -286,7 +286,7 @@ const TreinamentoModal: FC<TreinamentoModalProps> = ({ open, onOpenChange }) => 
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-orange-100 text-[#E83D22]">
+                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-[#303674]">
                   <span className="text-xl font-bold">4</span>
                 </div>
                 <div className="flex-1">
@@ -310,7 +310,7 @@ const TreinamentoModal: FC<TreinamentoModalProps> = ({ open, onOpenChange }) => 
                 <h4 className="font-semibold text-yellow-800 mb-1">Informação importante:</h4>
                 <p className="text-sm text-yellow-700">
                   Para finalizar o agendamento, é necessário efetuar o pagamento do honorário do instrutor e do crachá
-                  oficial de entregador Shopee que será emitido após a conclusão do treinamento.
+                  oficial de entregador Mercado Livre que será emitido após a conclusão do treinamento.
                 </p>
               </div>
             </div>
@@ -318,7 +318,7 @@ const TreinamentoModal: FC<TreinamentoModalProps> = ({ open, onOpenChange }) => 
             <DialogFooter className="sticky bottom-0 bg-white pb-2 mt-3">
               <Button 
                 type="submit" 
-                className="w-full bg-[#EE4E2E] hover:bg-[#D43C1E] text-white" 
+                className="w-full bg-[#303674] hover:bg-[#242960] text-white" 
                 onClick={handleSubmit}
               >
                 Continuar para pagamento
@@ -435,7 +435,7 @@ const TreinamentoModal: FC<TreinamentoModalProps> = ({ open, onOpenChange }) => 
                   <div className="bg-red-50 p-2 rounded-md border border-red-200">
                     <p className="text-xs text-red-700">
                       <span className="font-bold">IMPORTANTE:</span> Sem o curso e o pagamento, você NÃO receberá suas credenciais 
-                      de acesso ao aplicativo Shopee.
+                      de acesso ao aplicativo Mercado Livre.
                     </p>
                   </div>
                 </div>
