@@ -419,17 +419,17 @@ const Cadastro: React.FC = () => {
     <div className="bg-white min-h-screen flex flex-col">
       <Header />
       
-      <div className="w-full bg-[#EE4E2E] py-1 px-6 flex items-center relative overflow-hidden">
+      <div className="w-full bg-[#FFE602] py-1 px-6 flex items-center relative overflow-hidden">
         {/* Meia-lua no canto direito */}
-        <div className="absolute right-0 top-0 bottom-0 w-32 h-full rounded-l-full bg-[#E83D22]"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 h-full rounded-l-full bg-[#FFDF00]"></div>
         
         <div className="flex items-center relative z-10">
-          <div className="text-white mr-3">
-            <i className="fas fa-chevron-right text-3xl font-black" style={{color: 'white'}}></i>
+          <div className="mr-3">
+            <i className="fas fa-chevron-right text-3xl font-black" style={{color: '#303674'}}></i>
           </div>
           <div className="leading-none">
-            <h1 className="text-base font-bold text-white mb-0">Motorista Parceiro</h1>
-            <p className="text-white text-sm mt-0" style={{transform: 'translateY(-2px)'}}>Shopee</p>
+            <h1 className="text-base font-bold text-[#303674] mb-0">Motorista Parceiro</h1>
+            <p className="text-[#303674] text-sm mt-0" style={{transform: 'translateY(-2px)'}}>Mercado Livre</p>
           </div>
         </div>
       </div>
@@ -522,7 +522,7 @@ const Cadastro: React.FC = () => {
                     } rounded-lg transition-colors`}
                   >
                     <div className="mb-3 h-24 flex items-center justify-center">
-                      <img src={shopeeCarsImage} alt="Carros Shopee" className="h-full w-auto object-contain" />
+                      <img src={shopeeCarsImage} alt="Carros Mercado Livre" className="h-full w-auto object-contain" />
                     </div>
                     <span className={`font-medium ${
                       tipoVeiculo === TipoVeiculo.CARRO ? 'text-[#E83D22]' : 'text-gray-700'
@@ -541,7 +541,7 @@ const Cadastro: React.FC = () => {
                     } rounded-lg transition-colors`}
                   >
                     <div className="mb-3 h-20 flex items-center justify-center">
-                      <img src={shopeeMotoImage} alt="Moto Shopee" className="h-full object-contain" />
+                      <img src={shopeeMotoImage} alt="Moto Mercado Livre" className="h-full object-contain" />
                     </div>
                     <span className={`font-medium ${
                       tipoVeiculo === TipoVeiculo.MOTO ? 'text-[#E83D22]' : 'text-gray-700'
@@ -610,7 +610,7 @@ const Cadastro: React.FC = () => {
 
             <Button
               type="submit"
-              className="w-full bg-[#E83D22] hover:bg-[#d73920] text-white font-medium py-6 text-base rounded-[3px]"
+              className="w-full bg-[#303674] hover:bg-[#242960] text-white font-medium py-6 text-base rounded-[3px]"
               disabled={isSubmitting}
               style={{ height: '50px' }}
             >
@@ -633,7 +633,7 @@ const Cadastro: React.FC = () => {
           "Analisando disponibilidade na região",
           "Verificando histórico de entregas"
         ]}
-        completionMessage="Seus dados foram validados com sucesso! Você está apto a ser um Entregador Parceiro Shopee."
+        completionMessage="Seus dados foram validados com sucesso! Você está apto a ser um Entregador Parceiro Mercado Livre."
         loadingTime={7000}
       />
     </div>
