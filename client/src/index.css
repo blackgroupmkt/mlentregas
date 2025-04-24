@@ -12,19 +12,40 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #E83D2280;
+  background-color: #303674;
   border-radius: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #E83D22;
+  background-color: #303674;
 }
 
 /* Estilos personalizados para o campo de CEP */
 .cep-input:focus {
   outline: none !important;
-  border-color: #E83D22 !important;
-  box-shadow: 0 0 0 1px #E83D22 !important;
+  border-color: #FFE602 !important;
+  box-shadow: 0 0 0 1px #FFE602 !important;
+}
+
+/* Cores do Mercado Livre */
+.bg-mercadolivre {
+  background-color: #FFE602;
+}
+
+.text-mercadolivre {
+  color: #FFE602;
+}
+
+.border-mercadolivre {
+  border-color: #FFE602;
+}
+
+.bg-mercadolivre-secondary {
+  background-color: #303674;
+}
+
+.text-mercadolivre-secondary {
+  color: #303674;
 }
 
 :root {
@@ -84,23 +105,23 @@
   }
 }
 
-/* Shopee Custom Styles */
+/* Mercado Livre Custom Styles */
 .bg-shopee {
-  background-color: #EE4D2D;
+  background-color: #FFE602;
 }
 .bg-custom-orange {
-  background-color: #EE4D2D;
+  background-color: #303674;
 }
 .text-shopee {
-  color: #EE4D2D;
+  color: #303674;
 }
 .text-custom-orange {
-  color: #EE4D2D;
+  color: #303674;
 }
 .hamburger-line {
   width: 24px;
   height: 3px;
-  background-color: #EE4D2D;
+  background-color: #303674;
   margin: 4px 0;
   transition: 0.4s;
 }
@@ -126,8 +147,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(238, 77, 45, 0.2);
-  color: #EE4D2D;
+  background: rgba(48, 54, 116, 0.2);
+  color: #303674;
   padding: 10px;
   text-decoration: none;
   border-radius: 50%;
@@ -145,7 +166,7 @@
 }
 ol.list-decimal > li::marker {
   font-weight: bold;
-  color: #F24A2C;
+  color: #303674;
 }
 
 /* Estilos para o modal de carregamento */
@@ -178,7 +199,7 @@ ol.list-decimal > li::marker {
 }
 
 .status-item.active .status-icon {
-  background-color: #E83D22;
+  background-color: #303674;
   color: white;
 }
 
