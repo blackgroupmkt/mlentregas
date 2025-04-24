@@ -107,16 +107,16 @@
 
 /* Mercado Livre Custom Styles */
 .bg-shopee {
-  background-color: #FFE602;
+  background-color: #FFE602; /* Mantendo para retrocompatibilidade mas usando a cor do Mercado Livre */
 }
 .bg-custom-orange {
-  background-color: #303674;
+  background-color: #303674; /* Azul do Mercado Livre */
 }
 .text-shopee {
-  color: #303674;
+  color: #303674; /* Azul do Mercado Livre */
 }
 .text-custom-orange {
-  color: #303674;
+  color: #303674; /* Azul do Mercado Livre */
 }
 .hamburger-line {
   width: 24px;
