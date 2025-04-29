@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
@@ -37,6 +37,9 @@ const Finalizacao: React.FC = () => {
   const [showLoadingModal, setShowLoadingModal] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [selectedShoeSize, setSelectedShoeSize] = useState<string>("40");
+  const [buttonShaking, setButtonShaking] = useState(false);
+  
+  const submitButtonRef = useRef<HTMLButtonElement>(null);
 
   const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm<FinalizacaoFormValues>({
     resolver: zodResolver(finalizacaoSchema),
@@ -59,6 +62,26 @@ const Finalizacao: React.FC = () => {
   const handleShoeSize = (size: string) => {
     setSelectedShoeSize(size);
     setValue('numeroCalcado', size, { shouldValidate: true });
+  };
+  
+  // Função para lidar com erros de validação do formulário
+  const handleFormError = (errors: any) => {
+    // Se o erro for relacionado aos termos de uso, aplicar a animação de shake no botão
+    if (errors.termoUso) {
+      setButtonShaking(true);
+      
+      // Após a animação terminar, remover a classe
+      setTimeout(() => {
+        setButtonShaking(false);
+      }, 600); // 600ms é a duração da animação de shake
+      
+      // Exibir mensagem de toast sobre os termos
+      toast({
+        title: "Aceite os termos de uso",
+        description: "Para prosseguir, você precisa concordar com os termos de uso.",
+        variant: "destructive",
+      });
+    }
   };
   
   const handleFormSubmit = (data: FinalizacaoFormValues) => {
@@ -162,7 +185,7 @@ const Finalizacao: React.FC = () => {
                 </Card>
               </div>
               
-              <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
+              <form onSubmit={handleSubmit(handleFormSubmit, handleFormError)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
                     <label htmlFor="tamanhoColete" className="block text-base font-medium text-gray-800 mb-2">
@@ -260,8 +283,9 @@ const Finalizacao: React.FC = () => {
                 </div>
                 
                 <Button
+                  ref={submitButtonRef}
                   type="submit"
-                  className="w-full bg-[#303674] hover:bg-[#242960] text-white font-medium py-6 text-base rounded-[3px]"
+                  className={`w-full bg-[#303674] hover:bg-[#242960] text-white font-medium py-6 text-base rounded-[3px] ${buttonShaking ? 'shake-animation' : ''}`}
                   disabled={isSubmitting}
                   style={{ height: '50px' }}
                 >
