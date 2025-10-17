@@ -939,10 +939,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       console.log(`[INFO] Consultando informações do veículo com placa: ${vehiclePlate}`);
+      console.log(`[DEBUG] Ambiente: ${process.env.NODE_ENV}`);
+      console.log(`[DEBUG] Hostname: ${req.hostname}`);
+      console.log(`[DEBUG] Origin: ${req.headers.origin}`);
       
       // Verificar se existe a chave da API de veículos
       if (!process.env.VEHICLE_API_KEY) {
         console.error('[ERRO] Chave da API de consulta de veículos não configurada');
+        console.error('[DEBUG] Variáveis de ambiente disponíveis:', Object.keys(process.env).filter(k => !k.includes('SECRET')));
         return res.status(500).json({ 
           error: 'Configuração incorreta',
           details: 'Serviço de consulta de veículos não configurado. API key ausente.',

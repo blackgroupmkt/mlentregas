@@ -83,12 +83,9 @@ export function useVehicleInfo(): UseVehicleInfoReturn {
       // Estratégia 1: Consulta segura via nosso próprio backend
       console.log('[DEBUG] Tentando consulta via API segura do backend');
       try {
-        // Determinar URL base dependendo do ambiente
-        const baseUrl = window.location.hostname.includes('replit.dev') || 
-                      window.location.hostname === 'localhost' 
-                      ? '' : 'https://disparador-f065362693d3.herokuapp.com';
-        
-        const apiUrl = `${baseUrl}/api/vehicle-info/${cleanedPlaca}`;
+        // Usar sempre URL relativa para funcionar em qualquer ambiente
+        // O backend e frontend devem estar no mesmo domínio
+        const apiUrl = `/api/vehicle-info/${cleanedPlaca}`;
         console.log(`[DEBUG] Fazendo consulta API: ${apiUrl}`);
         
         const backendResponse = await fetch(apiUrl);
