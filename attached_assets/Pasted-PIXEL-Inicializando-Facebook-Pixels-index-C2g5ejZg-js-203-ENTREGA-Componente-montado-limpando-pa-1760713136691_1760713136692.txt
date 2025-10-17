@@ -1,0 +1,74 @@
+PIXEL] Inicializando Facebook Pixels
+index-C2g5ejZg.js:203 [ENTREGA] Componente montado, limpando pagamentos anteriores
+index-C2g5ejZg.js:203 CEP recuperado do localStorage: 71919-900
+index-C2g5ejZg.js:203 Dados do usuário recuperados: {cpf: '011.011.011-05', nome: 'Marina Quiroz', telefone: '(31) 99999-9999', email: 'petitjean2010@outlook.com', placa: 'PAO1J78', …}
+index-C2g5ejZg.js:203 Iniciando processamento de pagamento For4Payments
+index-C2g5ejZg.js:192 Ambiente de execução: PRODUÇÃO
+index-C2g5ejZg.js:192 URL da API de pagamentos (via backend): /api/payments/pix
+index-C2g5ejZg.js:192 Dados de pagamento: {name: 'Marina Quiroz', cpf: '011***05', email: 'petitjean2010@outlook.com'}
+index-C2g5ejZg.js:192 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+(anonymous) @ index-C2g5ejZg.js:192
+Rm @ index-C2g5ejZg.js:40
+Qs @ index-C2g5ejZg.js:40
+h3 @ index-C2g5ejZg.js:40
+fi @ index-C2g5ejZg.js:40
+JP @ index-C2g5ejZg.js:40
+Zo @ index-C2g5ejZg.js:38
+(anonymous) @ index-C2g5ejZg.js:40
+index-C2g5ejZg.js:192  POST https://mercadolivre.cadastroentregas.com/api/payments/pix 404 (Not Found)
+kU @ index-C2g5ejZg.js:192
+$ @ index-C2g5ejZg.js:203
+(anonymous) @ index-C2g5ejZg.js:148
+await in (anonymous)
+MF @ index-C2g5ejZg.js:37
+IF @ index-C2g5ejZg.js:37
+RF @ index-C2g5ejZg.js:37
+yP @ index-C2g5ejZg.js:37
+ME @ index-C2g5ejZg.js:37
+(anonymous) @ index-C2g5ejZg.js:37
+ww @ index-C2g5ejZg.js:40
+rE @ index-C2g5ejZg.js:37
+Cg @ index-C2g5ejZg.js:37
+K0 @ index-C2g5ejZg.js:37
+YF @ index-C2g5ejZg.js:37
+index-C2g5ejZg.js:192 Erro HTTP 404: {"error":"API endpoint not found","path":"/api/payments/pix"}
+kU @ index-C2g5ejZg.js:192
+await in kU
+$ @ index-C2g5ejZg.js:203
+(anonymous) @ index-C2g5ejZg.js:148
+await in (anonymous)
+MF @ index-C2g5ejZg.js:37
+IF @ index-C2g5ejZg.js:37
+RF @ index-C2g5ejZg.js:37
+yP @ index-C2g5ejZg.js:37
+ME @ index-C2g5ejZg.js:37
+(anonymous) @ index-C2g5ejZg.js:37
+ww @ index-C2g5ejZg.js:40
+rE @ index-C2g5ejZg.js:37
+Cg @ index-C2g5ejZg.js:37
+K0 @ index-C2g5ejZg.js:37
+YF @ index-C2g5ejZg.js:37
+index-C2g5ejZg.js:192 Erro ao processar pagamento: Error: Falha na comunicação com o servidor: 
+    at kU (index-C2g5ejZg.js:192:182658)
+    at async $ (index-C2g5ejZg.js:203:6387)
+    at async index-C2g5ejZg.js:148:194517
+kU @ index-C2g5ejZg.js:192
+await in kU
+$ @ index-C2g5ejZg.js:203
+(anonymous) @ index-C2g5ejZg.js:148
+await in (anonymous)
+MF @ index-C2g5ejZg.js:37
+IF @ index-C2g5ejZg.js:37
+RF @ index-C2g5ejZg.js:37
+yP @ index-C2g5ejZg.js:37
+ME @ index-C2g5ejZg.js:37
+(anonymous) @ index-C2g5ejZg.js:37
+ww @ index-C2g5ejZg.js:40
+rE @ index-C2g5ejZg.js:37
+Cg @ index-C2g5ejZg.js:37
+K0 @ index-C2g5ejZg.js:37
+YF @ index-C2g5ejZg.js:37
+index-C2g5ejZg.js:203 Erro ao processar pagamento: Error: Falha na comunicação com o servidor: 
+    at kU (index-C2g5ejZg.js:192:182995)
+    at async $ (index-C2g5ejZg.js:203:6387)
+    at async index-C2g5ejZg.js:148:194517
