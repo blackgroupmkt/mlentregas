@@ -105,6 +105,96 @@ app.post('/api/payments/create-pix', (req, res) => {
   });
 });
 
+// Cache para consultas de veículos
+const vehicleInfoCache = {};
+
+// Consultar informações do veículo pela placa
+app.get('/api/vehicle-info/:placa', async (req, res) => {
+  try {
+    const { placa } = req.params;
+    
+    if (!placa) {
+      return res.status(400).json({ error: 'Placa do veículo não fornecida' });
+    }
+    
+    // Limpar a placa e deixar apenas letras e números
+    const vehiclePlate = placa.replace(/[^A-Za-z0-9]/g, '').toUpperCase();
+    
+    // Verificar se a informação já está em cache
+    if (vehicleInfoCache[vehiclePlate]) {
+      console.log(`[CACHE] Usando dados em cache para placa: ${vehiclePlate}`);
+      return res.json(vehicleInfoCache[vehiclePlate]);
+    }
+    
+    console.log(`[INFO] Consultando informações do veículo com placa: ${vehiclePlate}`);
+    
+    // Verificar se existe a chave da API de veículos
+    if (!process.env.VEHICLE_API_KEY) {
+      console.error('[ERRO] Chave da API de consulta de veículos não configurada');
+      console.error('[DEBUG] Variáveis disponíveis:', Object.keys(process.env).filter(k => !k.includes('SECRET') && !k.includes('KEY')));
+      return res.status(500).json({ 
+        error: 'Configuração incorreta',
+        details: 'Serviço de consulta de veículos não configurado. VEHICLE_API_KEY ausente.',
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    const apiKey = process.env.VEHICLE_API_KEY;
+    const keyPreview = apiKey.substring(0, 5) + '...' + apiKey.substring(apiKey.length - 3);
+    console.log(`[DEBUG] API key presente: ${keyPreview}`);
+    
+    // URL da API de consulta de veículos
+    const apiUrl = `https://wdapi2.com.br/consulta/${vehiclePlate}/${apiKey}`;
+    
+    console.log('[DEBUG] Tentando consulta direta com chave na URL');
+    
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+    
+    if (!response.ok) {
+      const status = response.status;
+      console.log('[AVISO] Consulta de veículo falhou:', status);
+      return res.status(500).json({ 
+        error: 'Falha ao consultar dados do veículo',
+        details: `API retornou status ${status}`,
+        timestamp: new Date().toISOString()
+      });
+    }
+    
+    const vehicleData = await response.json();
+    console.log('[INFO] Consulta de veículo bem-sucedida');
+    
+    // Se a API retornou erro
+    if (vehicleData.error) {
+      console.log(`[INFO] Erro na consulta da placa ${vehiclePlate}: ${vehicleData.error}`);
+      return res.status(404).json({ 
+        error: vehicleData.error,
+        placa: vehiclePlate,
+        message: 'A API de veículos retornou um erro para esta placa.',
+        timestamp: new Date().toISOString()
+      });
+    }
+    
+    // Armazenar em cache
+    vehicleInfoCache[vehiclePlate] = vehicleData;
+    console.log(`[CACHE] Armazenando dados da placa ${vehiclePlate} em cache`);
+    
+    res.json(vehicleData);
+    
+  } catch (error) {
+    console.error('[ERRO] Falha na consulta de veículo:', error.message);
+    res.status(500).json({ 
+      error: 'Erro ao consultar informações do veículo',
+      details: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
 // Catch-all para APIs não encontradas
 app.use('/api/*', (req, res) => {
   res.status(404).json({
