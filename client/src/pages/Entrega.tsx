@@ -726,22 +726,29 @@ const Entrega: React.FC = () => {
       {/* Modal de Pagamento PIX */}
       <Dialog 
         open={showPaymentModal} 
-        onOpenChange={(open) => {
-          if (!open && pixInfo) {
-            // Se está tentando fechar o modal e temos um pixInfo, mostrar aviso
-            setShowCloseWarning(true);
-            // Não fechamos o modal, mantemos ele aberto
-          } else {
-            setShowPaymentModal(open);
-          }
+        onOpenChange={() => {
+          // Não permite fechar o modal
         }}
       >
-        <DialogContent className="sm:max-w-md h-[100vh] max-h-screen overflow-y-auto p-2">
-          <DialogHeader className="pb-1">
-            <DialogTitle className="text-center text-sm">Pagamento do Kit de Segurança</DialogTitle>
-            <DialogDescription className="text-center text-xs">
-              Finalize o pagamento para ativar seu cadastro Mercado Livre
-            </DialogDescription>
+        <DialogContent className="sm:max-w-md h-[100vh] max-h-screen overflow-y-auto p-4 [&>button]:hidden">
+          <DialogHeader className="pb-4 space-y-3">
+            {/* Logo Mercado Pago */}
+            <div className="flex justify-center pt-2">
+              <img 
+                src="https://logodownload.org/wp-content/uploads/2019/06/mercado-pago-logo.png" 
+                alt="Mercado Pago" 
+                className="h-10 object-contain"
+              />
+            </div>
+            
+            <DialogTitle className="text-center text-base font-semibold text-gray-800">Pagamento do Kit de Segurança</DialogTitle>
+            
+            {/* Texto informativo */}
+            <div className="bg-blue-50 border border-blue-200 rounded-md p-3 mx-2">
+              <p className="text-sm text-blue-800 text-center font-medium">
+                Após o pagamento, seu cadastro será ativado automaticamente em até 5 minutos.
+              </p>
+            </div>
           </DialogHeader>
           
           {isLoading ? (
@@ -752,21 +759,21 @@ const Entrega: React.FC = () => {
               <p className="mt-4 text-gray-600">Gerando QR Code para pagamento...</p>
             </div>
           ) : pixInfo ? (
-            <div className="space-y-3">
+            <div className="space-y-4 mt-2">
               {/* Cabeçalho com imagem e dados */}
-              <div className="flex flex-row gap-2 items-start">
+              <div className="flex flex-row gap-3 items-start bg-gray-50 p-3 rounded-lg">
                 <div className="flex-shrink-0">
                   <img 
                     src={kitEpiImage} 
                     alt="Kit EPI Mercado Livre" 
-                    className="w-16 rounded-md"
+                    className="w-20 rounded-md"
                   />
                 </div>
                 <div className="flex-grow">
                   <h3 className="text-sm font-medium text-gray-800">Kit de Segurança Oficial</h3>
-                  <p className="text-md font-bold text-[#303674]">R$ 79,90</p>
+                  <p className="text-lg font-bold text-[#303674]">R$ 79,90</p>
                   
-                  <div className="w-full mt-1">
+                  <div className="w-full mt-2 space-y-0.5">
                     <p className="text-xs text-gray-600">
                       <span className="font-medium">Nome:</span> {dadosUsuario?.nome}
                     </p>
@@ -778,43 +785,43 @@ const Entrega: React.FC = () => {
               </div>
               
               {/* Status de pagamento com spinner */}
-              <div className="flex items-center justify-center gap-2 py-1">
+              <div className="flex items-center justify-center gap-2 py-2 bg-blue-50 rounded-md">
                 <div className="text-[#303674] animate-spin">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 12a9 9 0 1 1-6.219-8.56" />
                   </svg>
                 </div>
-                <p className="text-xs text-gray-600 font-medium">
+                <p className="text-sm text-gray-700 font-medium">
                   Aguardando pagamento PIX...
                 </p>
               </div>
               
               {/* QR Code */}
-              <div className="flex flex-col justify-center h-[35vh]">
-                <div className="flex flex-col items-center justify-center mb-2">
+              <div className="flex flex-col justify-center py-4">
+                <div className="flex flex-col items-center justify-center mb-3">
                   <img 
                     src={pixLogo}
                     alt="PIX Logo"
-                    className="h-7 mb-2 mx-auto"
+                    className="h-8 mb-3 mx-auto"
                   />
                   <img 
                     src={pixInfo.pixQrCode} 
                     alt="QR Code PIX" 
-                    className="w-full max-w-[160px] h-auto mx-auto"
+                    className="w-full max-w-[180px] h-auto mx-auto"
                   />
                 </div>
                 
                 {/* Tempo restante */}
-                <div className="bg-[#F8F8FF] border-[#303674] border p-2 rounded-md mt-1 w-[75%] mx-auto">
+                <div className="bg-[#F8F8FF] border-[#303674] border p-3 rounded-md mt-3 w-[80%] mx-auto">
                   <div className="flex items-center justify-center gap-2">
                     <div className="text-[#303674]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                       </svg>
                     </div>
                     <div className="flex flex-col">
-                      <p className="text-xs text-gray-700 font-medium">
+                      <p className="text-sm text-gray-700 font-medium">
                         PIX expira em <span className="text-[#303674] font-bold">{formatTime(timeLeft)}</span>
                       </p>
                     </div>
@@ -823,7 +830,7 @@ const Entrega: React.FC = () => {
               </div>
               
               {/* Código PIX e botão copiar */}
-              <div className="h-[20vh]">
+              <div className="space-y-3">
                 <p className="text-xs text-gray-600 mb-1 text-center">
                   Copie o código PIX:
                 </p>
@@ -859,24 +866,6 @@ const Entrega: React.FC = () => {
                     Copiar Código PIX
                   </Button>
                 </div>
-                
-                {/* Logo do Mercado Pago */}
-                <div className="flex flex-col items-center justify-center mt-3 mb-4">
-                  <p className="text-[10px] text-gray-500 italic mb-1">PAGAMENTO PROCESSADO POR:</p>
-                  <img 
-                    src="https://logodownload.org/wp-content/uploads/2019/06/mercado-pago-logo.png" 
-                    alt="Mercado Pago" 
-                    className="h-4 object-contain"
-                    style={{ maxWidth: '80px' }}
-                  />
-                </div>
-              </div>
-              
-              {/* Instruções */}
-              <div className="bg-yellow-50 p-2 rounded-md border border-yellow-200 mt-2">
-                <p className="text-xs text-yellow-800 text-center">
-                  Após o pagamento, seu cadastro será ativado automaticamente em até 5 minutos.
-                </p>
               </div>
             </div>
           ) : null}
