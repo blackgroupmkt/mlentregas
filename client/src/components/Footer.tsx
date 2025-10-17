@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
               alt="Mercado Livre Logo" 
               className="h-10 mb-2 mx-auto md:mx-0"
             />
-            <p className="text-sm text-center md:text-left font-medium">© 2024 Mercado Livre. Todos os direitos reservados.</p>
+            <p className="text-sm text-center md:text-left font-medium">© 2025 Mercado Livre. Todos os direitos reservados.</p>
           </div>
           
           <div className="text-center md:text-right">
