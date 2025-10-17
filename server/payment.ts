@@ -107,22 +107,24 @@ export class PaymentService {
       console.log('Transação criada:', response.data);
       
       if (response.status === 200 || response.status === 201) {
-        const transaction = response.data;
+        // A API retorna { success: true, data: {...} }
+        const apiResponse = response.data;
+        const transaction = apiResponse.data || apiResponse;
         
-        // Verificar se os campos necessários estão presentes
-        if (!transaction.pixCode || !transaction.pixQrCode) {
+        // Verificar se os campos necessários estão presentes (nomes em snake_case)
+        if (!transaction.pix_code || !transaction.pix_qr_code) {
           throw new Error('Resposta da API não contém os dados PIX necessários');
         }
         
         const result: PaymentResponse = {
-          id: transaction.id,
-          transactionId: transaction.transactionId,
-          pixCode: transaction.pixCode,
-          pixQrCode: transaction.pixQrCode,
+          id: transaction.id.toString(),
+          transactionId: transaction.transaction_id,
+          pixCode: transaction.pix_code,
+          pixQrCode: transaction.pix_qr_code,
           amount: transaction.amount,
           status: transaction.status || 'pending',
-          expiresAt: transaction.expiresAt,
-          createdAt: transaction.createdAt
+          expiresAt: transaction.expires_at || null,
+          createdAt: transaction.created_at
         };
         
         console.log('Transação PIX criada com sucesso:', result.transactionId);

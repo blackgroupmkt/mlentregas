@@ -1,0 +1,44 @@
+Dados de pagamento recebidos: {
+  name: 'Heloise Alessandra Viana',
+  cpf: '335.124.038-40',
+  email: 'agenciakalistmkt@outlook.com',
+  phone: '(31) 98422-5586',
+  amount: 79.9,
+  description: 'Pagamento via PIX'
+}
+Processando pagamento de R$ 79.9 para Heloise Alessandra Viana, CPF 335.124.038-40
+Criando transação PIX via 4m Pagamentos... {
+  name: 'Heloise Alessandra Viana',
+  email: 'agenciakalistmkt@outlook.com',
+  cpf: '335...40',
+  amount: 79.9
+}
+Enviando dados para API 4m Pagamentos
+Transação criada: {
+  success: true,
+  data: {
+    id: 48001,
+    transaction_id: '4M3084605364',
+    pix_code: '00020101021226820014br.gov.bcb.pix2560qrcode.pagsm.com.br/pix/e7c89066-f434-4938-8edf-0c663a9874605204000053039865802BR5918PAGAMENTOCERTOLTDA6008SaoPaulo62070503***63043594',
+    pix_qr_code: 'data:image/png;base64,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',
+    customer_name: 'Heloise Alessandra Viana',
+    customer_email: 'agenciakalistmkt@outlook.com',
+    customer_cpf: '33512403840',
+    customer_phone: '31984225586',
+    amount: '79.9',
+    net_amount: '79.9',
+    fee_amount: '0',
+    status: 'pending',
+    expires_at: null,
+    created_at: '2025-10-17T03:15:39.378Z'
+  },
+  timestamp: '2025-10-17T03:15:39.378Z',
+  request_id: 'req_1760670935740_nf5l9oxdr'
+}
+Erro ao criar transação PIX: Resposta da API não contém os dados PIX necessários
+Erro ao processar pagamento PIX: Error: Resposta da API não contém os dados PIX necessários
+    at PaymentService.createPixPayment (/home/runner/workspace/server/payment.ts:141:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:1271:29)
+3:15:39 AM [express] POST /api/payments/pix 500 in 3776ms :: {"error":"Resposta da API não contém os…
+3:15:52 AM [express] GET /api/check-ip-status 200 in 272ms :: {"status":"allowed","message":"IP não …

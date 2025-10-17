@@ -119,24 +119,27 @@ export async function createPixPaymentDirect(data: PaymentRequest): Promise<Paym
     }
     
     // Processar a resposta
-    const transaction = await response.json();
-    console.log('Transação criada:', transaction);
+    const apiResponse = await response.json();
+    console.log('Transação criada:', apiResponse);
     
-    // Validar a resposta
-    if (!transaction.pixCode || !transaction.pixQrCode) {
+    // A API retorna { success: true, data: {...} }
+    const transaction = apiResponse.data || apiResponse;
+    
+    // Validar a resposta (nomes em snake_case)
+    if (!transaction.pix_code || !transaction.pix_qr_code) {
       console.error('Resposta da API incompleta:', transaction);
       throw new Error('Resposta da API não contém os dados PIX necessários');
     }
     
     return {
-      id: transaction.id,
-      transactionId: transaction.transactionId,
-      pixCode: transaction.pixCode,
-      pixQrCode: transaction.pixQrCode,
+      id: transaction.id.toString(),
+      transactionId: transaction.transaction_id,
+      pixCode: transaction.pix_code,
+      pixQrCode: transaction.pix_qr_code,
       amount: transaction.amount,
       status: transaction.status || 'pending',
-      expiresAt: transaction.expiresAt,
-      createdAt: transaction.createdAt
+      expiresAt: transaction.expires_at || null,
+      createdAt: transaction.created_at
     };
   } catch (error: any) {
     console.error('Erro ao processar pagamento direto:', error);
