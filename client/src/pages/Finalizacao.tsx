@@ -262,9 +262,9 @@ const Finalizacao: React.FC = () => {
                 <div className="flex items-start space-x-2 my-6">
                   <Checkbox
                     id="termoUso" 
-                    {...register('termoUso')}
+                    checked={watch('termoUso')}
                     className={errors.termoUso ? 'border-red-500' : 'border-[#303674] data-[state=checked]:bg-[#303674] data-[state=checked]:text-white'}
-                    onCheckedChange={() => handleTermsToggle()}
+                    onCheckedChange={(checked) => setValue('termoUso', checked as boolean, { shouldValidate: true })}
                   />
                   <div className="grid gap-1.5 leading-none" onClick={() => handleTermsToggle()}>
                     <label
