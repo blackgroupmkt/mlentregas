@@ -14,6 +14,12 @@ import { ipService } from "@/lib/ip-service";
  */
 export function useDesktopProtection() {
   React.useEffect(() => {
+    // ⚠️ PROTEÇÃO DESKTOP DESATIVADA ⚠️
+    // Todas as verificações foram removidas por solicitação do usuário
+    console.log("Proteção desktop desativada. Acesso permitido de qualquer dispositivo.");
+    return;
+    
+    // Código original comentado abaixo:
     // Verificação imediata no cliente através de localStorage/cookies
     // Isso ajuda a bloquear instantaneamente mesmo antes da resposta da API
     if (ipService.isLocallyBanned()) {

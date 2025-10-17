@@ -19,9 +19,15 @@ app.use(express.urlencoded({ extended: false, limit: '10mb' }));
 // Lista de IPs que nunca devem ser banidos
 const neverBanIPs = ['201.87.251.220']; // IP específico do cliente
 
-// Middleware para verificação e bloqueio de IPs banidos (nível servidor)
-// Este middleware intercepta TODAS as requisições e verifica se o IP está banido
+// ⚠️ PROTEÇÃO DE IP DESATIVADA ⚠️
+// Middleware para verificação e bloqueio de IPs banidos (DESATIVADO)
+// Este middleware foi desativado por solicitação do usuário
 app.use(async (req: Request, res: Response, next: NextFunction) => {
+  // Todas as verificações foram removidas - permite acesso de qualquer IP/dispositivo
+  next();
+  
+  // Código original comentado abaixo:
+  /*
   try {
     // Ignorar requisições para endpoints de verificação de bannimento e report
     // para evitar loop infinito ou bloquear a própria verificação
@@ -85,6 +91,7 @@ app.use(async (req: Request, res: Response, next: NextFunction) => {
     // Em caso de erro, permitir acesso
     next();
   }
+  */
 });
 
 // Se estiver em produção, adiciona middleware para corrigir caminhos de assets no Heroku

@@ -118,6 +118,13 @@ async function getIpLocation(ip: string): Promise<string> {
 
 // Middleware para verificar se o usuário está usando desktop
 async function desktopDetectionMiddleware(req: Request, res: Response, next: NextFunction) {
+  // ⚠️ PROTEÇÃO DESKTOP DESATIVADA ⚠️
+  // Todas as verificações foram removidas por solicitação do usuário
+  // Acesso permitido de qualquer dispositivo (desktop, mobile, tablet)
+  console.log("Ambiente de desenvolvimento detectado. Bloqueio instantâneo desativado.");
+  return next();
+  
+  // Código original comentado abaixo:
   // Ignorar requisições de API, admin e relacionadas a domínios
   if (req.path.startsWith("/api") || req.path.startsWith("/ips") || req.path.startsWith("/domains")) {
     return next();
