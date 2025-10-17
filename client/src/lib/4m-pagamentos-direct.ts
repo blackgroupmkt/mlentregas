@@ -77,8 +77,14 @@ export async function createPixPaymentDirect(data: PaymentRequest): Promise<Paym
     // Processar telefone - remover caracteres não numéricos
     const phone = data.phone ? data.phone.replace(/\D/g, '') : generateRandomPhone();
     
+    // Formatar amount como string com 2 casas decimais
+    const amount = data.amount || 79.90;
+    const formattedAmount = typeof amount === 'number' 
+      ? amount.toFixed(2) 
+      : parseFloat(amount).toFixed(2);
+    
     const payload = {
-      amount: data.amount || 79.90,
+      amount: formattedAmount,
       customer_name: data.name,
       customer_email: data.email || generateRandomEmail(data.name),
       customer_cpf: cpf,

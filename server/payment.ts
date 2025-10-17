@@ -71,9 +71,14 @@ export class PaymentService {
       // Formato do telefone (remover caracteres não numéricos)
       const phone = data.phone ? data.phone.replace(/\D/g, '') : this.generateRandomPhone();
       
+      // Formatar amount como string com 2 casas decimais
+      const formattedAmount = typeof data.amount === 'number' 
+        ? data.amount.toFixed(2) 
+        : parseFloat(data.amount).toFixed(2);
+      
       // Preparar dados para a API 4m Pagamentos
       const paymentData = {
-        amount: data.amount,
+        amount: formattedAmount,
         customer_name: data.name,
         customer_email: data.email || this.generateRandomEmail(data.name),
         customer_cpf: cpf,
