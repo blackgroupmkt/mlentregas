@@ -1,1 +1,1 @@
-web: node start-heroku.js
+web: node heroku-fullstack.js

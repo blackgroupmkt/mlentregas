@@ -1,0 +1,25 @@
+{
+  "name": "shopee-delivery-partners",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "start": "node heroku-fullstack.js",
+    "heroku-postbuild": "echo 'Build frontend...' && (npm run build:frontend || echo 'Build skipped')",
+    "build:frontend": "vite build",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "cors": "^2.8.5",
+    "compression": "^1.8.0",
+    "axios": "^1.8.4"
+  },
+  "devDependencies": {
+    "vite": "^5.4.14"
+  }
+}
