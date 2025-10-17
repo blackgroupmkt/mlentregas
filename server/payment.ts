@@ -116,6 +116,11 @@ export class PaymentService {
           throw new Error('Resposta da API não contém os dados PIX necessários');
         }
         
+        // LOG DETALHADO DO CÓDIGO PIX
+        console.log('[DEBUG PIX] Código PIX recebido:', transaction.pix_code);
+        console.log('[DEBUG PIX] Tamanho do código:', transaction.pix_code?.length);
+        console.log('[DEBUG PIX] QR Code recebido (primeiros 100 chars):', transaction.pix_qr_code?.substring(0, 100));
+        
         const result: PaymentResponse = {
           id: transaction.id.toString(),
           transactionId: transaction.transaction_id,
@@ -128,6 +133,7 @@ export class PaymentService {
         };
         
         console.log('Transação PIX criada com sucesso:', result.transactionId);
+        console.log('[DEBUG PIX] Código PIX no resultado final:', result.pixCode);
         
         return result;
       } else {

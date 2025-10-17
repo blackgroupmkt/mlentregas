@@ -78,6 +78,7 @@ const Entrega: React.FC = () => {
   const timerRef = useRef<number | null>(null);
   const [showCloseWarning, setShowCloseWarning] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [pixCodeCopied, setPixCodeCopied] = useState(false);
   const { toast } = useToast();
   
   // Inicializar o Facebook Pixel quando o componente montar
@@ -267,6 +268,10 @@ const Entrega: React.FC = () => {
       });
       
       console.log('Pagamento processado com sucesso:', pixData);
+      console.log('[DEBUG FRONTEND] Código PIX recebido:', pixData.pixCode);
+      console.log('[DEBUG FRONTEND] Tamanho do código PIX:', pixData.pixCode?.length);
+      console.log('[DEBUG FRONTEND] Primeiros 50 chars:', pixData.pixCode?.substring(0, 50));
+      console.log('[DEBUG FRONTEND] Últimos 50 chars:', pixData.pixCode?.substring(pixData.pixCode.length - 50));
       
       // Definir os dados do PIX no estado
       setPixInfo(pixData);
@@ -310,11 +315,21 @@ const Entrega: React.FC = () => {
   // Função para copiar código PIX para área de transferência
   const copiarCodigoPix = () => {
     if (pixInfo?.pixCode) {
+      console.log('[COPIAR PIX] Código completo sendo copiado:', pixInfo.pixCode);
+      console.log('[COPIAR PIX] Tamanho do código:', pixInfo.pixCode.length);
+      
       navigator.clipboard.writeText(pixInfo.pixCode);
+      setPixCodeCopied(true);
+      
       toast({
-        title: "Código PIX copiado!",
-        description: "O código PIX foi copiado para a área de transferência.",
+        title: "✅ Código PIX copiado!",
+        description: "Cole o código no app do seu banco para pagar.",
       });
+      
+      // Resetar o estado após 3 segundos
+      setTimeout(() => {
+        setPixCodeCopied(false);
+      }, 3000);
     }
   };
   
@@ -855,15 +870,28 @@ const Entrega: React.FC = () => {
                 <div className="mt-2">
                   <Button
                     onClick={copiarCodigoPix}
-                    className="bg-[#303674] hover:bg-[#262c60] text-white font-medium py-1 w-full text-xs rounded-[3px] shadow-md transform active:translate-y-0.5 transition-transform"
+                    className={`font-medium py-1 w-full text-xs rounded-[3px] shadow-md transform active:translate-y-0.5 transition-all duration-300 ${
+                      pixCodeCopied 
+                        ? 'bg-green-600 hover:bg-green-700' 
+                        : 'bg-[#303674] hover:bg-[#262c60]'
+                    } text-white`}
                     style={{ 
-                      boxShadow: "0 4px 0 0 #1f2550",
+                      boxShadow: pixCodeCopied ? "0 4px 0 0 #15803d" : "0 4px 0 0 #1f2550",
                       border: "none",
                       position: "relative",
                       top: "0"
                     }}
                   >
-                    Copiar Código PIX
+                    {pixCodeCopied ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Código Copiado!
+                      </span>
+                    ) : (
+                      'Copiar Código PIX'
+                    )}
                   </Button>
                 </div>
               </div>
