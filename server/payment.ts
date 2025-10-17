@@ -7,41 +7,50 @@ interface PaymentRequest {
   cpf: string;
   phone?: string;
   amount: number;
-  items?: Array<{
-    title: string;
-    quantity: number;
-    unitPrice: number;
-    tangible: boolean;
-  }>;
+  description?: string;
+  product_id?: number;
 }
 
-// Interface para a resposta de pagamento
+// Interface para a resposta de pagamento da API 4m Pagamentos
 interface PaymentResponse {
   id: string;
+  transactionId: string;
   pixCode: string;
   pixQrCode: string;
-  status?: string;
+  amount: number;
+  status: string;
+  expiresAt?: string;
+  createdAt?: string;
   error?: string;
-  emailSent?: boolean;
-  emailError?: string;
+}
+
+// Interface para verificação de status
+interface PaymentStatus {
+  id: string;
+  transactionId: string;
+  status: 'pending' | 'paid' | 'expired' | 'cancelled';
+  amount: number;
+  createdAt?: string;
+  paidAt?: string;
 }
 
 /**
- * Serviço para processar pagamentos através da API For4Payments
+ * Serviço para processar pagamentos através da API 4m Pagamentos
  */
 export class PaymentService {
-  private readonly API_URL = 'https://app.for4payments.com.br/api/v1';
-  private readonly secretKey: string;
+  private readonly API_URL = 'https://app.4mpagamentos.com/api/v1';
+  private readonly apiKey: string | undefined;
 
   constructor() {
     // Obter a chave secreta das variáveis de ambiente
-    const secretKey = process.env.FOR4PAYMENTS_SECRET_KEY;
-    
-    if (!secretKey) {
-      throw new Error('Chave de API For4Payments não configurada');
+    this.apiKey = process.env.FOUR_M_PAGAMENTOS_API_KEY;
+  }
+  
+  private ensureApiKey(): string {
+    if (!this.apiKey) {
+      throw new Error('Chave de API 4m Pagamentos não configurada');
     }
-    
-    this.secretKey = secretKey;
+    return this.apiKey;
   }
 
   /**
@@ -49,7 +58,7 @@ export class PaymentService {
    */
   async createPixPayment(data: PaymentRequest): Promise<PaymentResponse> {
     try {
-      console.log('Processando pagamento PIX via For4Payments API:', {
+      console.log('Criando transação PIX via 4m Pagamentos...', {
         name: data.name,
         email: data.email,
         cpf: data.cpf ? data.cpf.substring(0, 3) + '...' + data.cpf.substring(data.cpf.length - 2) : '',
@@ -59,117 +68,107 @@ export class PaymentService {
       // Formatar CPF (remover caracteres não numéricos)
       const cpf = data.cpf.replace(/\D/g, '');
       
-      // Converter valor para centavos (exigido pela API)
-      const amountInCents = Math.round(data.amount * 100);
-      console.log(`[DEBUG-PAYMENT] Valor original: ${data.amount}, em centavos: ${amountInCents}`);
-      
       // Formato do telefone (remover caracteres não numéricos)
       const phone = data.phone ? data.phone.replace(/\D/g, '') : this.generateRandomPhone();
       
-      // Preparar dados para a API For4Payments
+      // Preparar dados para a API 4m Pagamentos
       const paymentData = {
-        name: data.name,
-        email: data.email || this.generateRandomEmail(data.name),
-        cpf: cpf,
-        phone: phone,
-        paymentMethod: 'PIX',
-        amount: amountInCents,
-        items: data.items || [{
-          title: 'Kit de Segurança Shopee',
-          quantity: 1,
-          unitPrice: amountInCents,
-          tangible: true
-        }]
+        amount: data.amount,
+        customer_name: data.name,
+        customer_email: data.email || this.generateRandomEmail(data.name),
+        customer_cpf: cpf,
+        customer_phone: phone,
+        description: data.description || 'Pagamento via PIX',
+        ...(data.product_id && { product_id: data.product_id })
       };
       
-      console.log('Enviando dados para API For4Payments');
+      console.log('Enviando dados para API 4m Pagamentos');
       
       // Configurar headers
+      const apiKey = this.ensureApiKey();
       const headers = {
-        'Authorization': this.secretKey, // A API espera apenas o token sem o prefixo 'Bearer'
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
-        'X-Requested-With': 'XMLHttpRequest',
-        'X-Cache-Buster': Date.now().toString(),
-        'Accept-Language': 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+        'Authorization': `Bearer ${apiKey}`,
+        'Accept': 'application/json'
       };
       
-      // Chamar API For4Payments
+      // Chamar API 4m Pagamentos
       const response = await axios.post(
-        `${this.API_URL}/transaction.purchase`,
+        `${this.API_URL}/payments`,
         paymentData,
         { headers, timeout: 30000 }
       );
       
-      console.log('Resposta da API For4Payments:', response.status);
+      console.log('Transação criada:', response.data);
       
-      if (response.status === 200) {
-        // Extrair dados da resposta
-        const responseData = response.data;
-        console.log('Dados da transação recebidos');
+      if (response.status === 200 || response.status === 201) {
+        const transaction = response.data;
         
-        // Mapeamento de campos de resposta para lidar com diferentes formatos
-        let pixCode = null;
-        let pixQrCode = null;
-        
-        // Verificar campos de código PIX em vários formatos possíveis
-        if (responseData.pixCode) pixCode = responseData.pixCode;
-        else if (responseData.copy_paste) pixCode = responseData.copy_paste;
-        else if (responseData.code) pixCode = responseData.code;
-        else if (responseData.pix_code) pixCode = responseData.pix_code;
-        else if (responseData.pix?.code) pixCode = responseData.pix.code;
-        else if (responseData.pix?.copy_paste) pixCode = responseData.pix.copy_paste;
-        else if (responseData.pix?.pixCode) pixCode = responseData.pix.pixCode;
-        
-        // Verificar campos de QR code em vários formatos possíveis
-        if (responseData.pixQrCode) pixQrCode = responseData.pixQrCode;
-        else if (responseData.qr_code_image) pixQrCode = responseData.qr_code_image;
-        else if (responseData.qr_code) pixQrCode = responseData.qr_code;
-        else if (responseData.pix_qr_code) pixQrCode = responseData.pix_qr_code;
-        else if (responseData.pix?.qrCode) pixQrCode = responseData.pix.qrCode;
-        else if (responseData.pix?.qr_code_image) pixQrCode = responseData.pix.qr_code_image;
-        else if (responseData.pix?.pixQrCode) pixQrCode = responseData.pix.pixQrCode;
-        
-        // Caso não haja QR code na resposta, gere um
-        if (!pixQrCode && pixCode) {
-          pixQrCode = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(pixCode)}`;
+        // Verificar se os campos necessários estão presentes
+        if (!transaction.pixCode || !transaction.pixQrCode) {
+          throw new Error('Resposta da API não contém os dados PIX necessários');
         }
         
-        // Verificar e organizar a resposta final
-        if (!pixCode) {
-          throw new Error('Código PIX não encontrado na resposta da API');
-        }
-        
-        // Formar resposta final
         const result: PaymentResponse = {
-          id: responseData.id || responseData.transactionId || `tx_${Date.now()}`,
-          pixCode: pixCode,
-          pixQrCode: pixQrCode || '',
-          status: responseData.status || 'pending'
+          id: transaction.id,
+          transactionId: transaction.transactionId,
+          pixCode: transaction.pixCode,
+          pixQrCode: transaction.pixQrCode,
+          amount: transaction.amount,
+          status: transaction.status || 'pending',
+          expiresAt: transaction.expiresAt,
+          createdAt: transaction.createdAt
         };
         
-        console.log('Transação PIX processada com sucesso:',
-          result.id,
-          'Código PIX gerado com',
-          result.pixCode ? result.pixCode.length : 0,
-          'caracteres'
-        );
+        console.log('Transação PIX criada com sucesso:', result.transactionId);
         
         return result;
       } else {
-        throw new Error(`Erro ao processar pagamento: ${response.statusText}`);
+        throw new Error(`Erro ao criar pagamento: ${response.statusText}`);
       }
     } catch (error: any) {
-      console.error('Erro na API For4Payments:', error.message);
+      console.error('Erro ao criar transação PIX:', error.message);
       
       if (error.response) {
         console.error('Detalhes do erro:', error.response.data);
       }
       
-      // Não usamos mais geração de fallback conforme solicitado pelo cliente
-      
       throw new Error(error.message || 'Erro ao processar pagamento');
+    }
+  }
+
+  /**
+   * Verifica o status de um pagamento
+   * Este endpoint é público e não requer autenticação
+   */
+  async checkPaymentStatus(transactionId: string): Promise<PaymentStatus> {
+    try {
+      console.log('Verificando status da transação:', transactionId);
+      
+      // Endpoint público - não requer autenticação
+      const response = await axios.get(
+        `${this.API_URL}/transactions/${transactionId}`,
+        { timeout: 10000 }
+      );
+      
+      if (response.status === 200) {
+        const statusData = response.data;
+        console.log('Status da transação:', statusData.status);
+        
+        return {
+          id: statusData.id,
+          transactionId: statusData.transactionId,
+          status: statusData.status,
+          amount: statusData.amount,
+          createdAt: statusData.createdAt,
+          paidAt: statusData.paidAt
+        };
+      } else {
+        throw new Error(`Erro ao verificar status: ${response.statusText}`);
+      }
+    } catch (error: any) {
+      console.error('Erro ao verificar status:', error.message);
+      throw new Error(error.message || 'Erro ao verificar status do pagamento');
     }
   }
   

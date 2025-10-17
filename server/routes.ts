@@ -3,7 +3,6 @@ import { createServer, type Server } from "http";
 import { WebSocketServer, WebSocket } from 'ws';
 import { storage } from "./storage";
 import { paymentService } from "./payment";
-import { createFor4Payment } from "./for4payments-bridge";
 import { 
   insertCandidateSchema, 
   insertStateSchema, 
@@ -1235,21 +1234,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
   
-  // Rota para processar pagamento PIX (usando TS API For4Payments)
+  // Rota para processar pagamento PIX (usando API 4m Pagamentos)
   app.post('/api/payments/pix', async (req, res) => {
     try {
-      // Verificar se a API For4Payments está configurada
-      if (!process.env.FOR4PAYMENTS_SECRET_KEY) {
-        console.error('ERRO: FOR4PAYMENTS_SECRET_KEY não configurada');
+      // Verificar se a API 4m Pagamentos está configurada
+      if (!process.env.FOUR_M_PAGAMENTOS_API_KEY) {
+        console.error('ERRO: FOUR_M_PAGAMENTOS_API_KEY não configurada');
         return res.status(500).json({
-          error: 'Serviço de pagamento não configurado. Configure a chave de API For4Payments.',
+          error: 'Serviço de pagamento não configurado. Configure a chave de API 4m Pagamentos.',
         });
       }
 
       console.log('Dados de pagamento recebidos:', req.body);
       
       // Validar dados da requisição
-      const { name, email, cpf, phone } = req.body;
+      const { name, email, cpf, phone, amount, description, product_id } = req.body;
       
       // Validação básica
       if (!name) {
@@ -1260,24 +1259,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: 'CPF é obrigatório.' });
       }
       
-      // Valor fixo para o kit de segurança: R$ 64,90
-      const paymentAmount = 79.90;
+      // Usar valor fornecido ou valor padrão
+      const paymentAmount = amount || 79.90;
       
       // Usar o email fornecido ou gerar um
       const userEmail = email || `${name.toLowerCase().replace(/\s+/g, '.')}.${Date.now()}@mail.shopee.br`;
       
       console.log(`Processando pagamento de R$ ${paymentAmount} para ${name}, CPF ${cpf}`);
       
-      // Processar pagamento via For4Payments
+      // Processar pagamento via 4m Pagamentos
       const paymentResult = await paymentService.createPixPayment({
         name,
         email: userEmail,
         cpf,
         phone: phone || '',
-        amount: paymentAmount
+        amount: paymentAmount,
+        description: description || 'Pagamento via PIX',
+        ...(product_id && { product_id })
       });
       
-      console.log('Resultado do pagamento For4Payments:', paymentResult);
+      console.log('Resultado do pagamento 4m Pagamentos:', paymentResult);
       
       // Se o pagamento foi processado com sucesso, enviar email
       if (paymentResult.pixCode && paymentResult.pixQrCode) {
@@ -1332,7 +1333,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
   
-  // Rota para processar pagamento PIX
+  // Rota para verificar status de pagamento (API 4m Pagamentos)
+  app.get('/api/payments/status/:transactionId', async (req, res) => {
+    try {
+      const { transactionId } = req.params;
+      
+      if (!transactionId) {
+        return res.status(400).json({ error: 'ID da transação não fornecido' });
+      }
+      
+      console.log(`Verificando status da transação: ${transactionId}`);
+      
+      // Verificar status usando o serviço de pagamento
+      const statusData = await paymentService.checkPaymentStatus(transactionId);
+      
+      console.log(`Status da transação ${transactionId}:`, statusData.status);
+      
+      res.json(statusData);
+    } catch (error: any) {
+      console.error('Erro ao verificar status do pagamento:', error);
+      res.status(500).json({ 
+        error: error.message || 'Erro ao verificar status do pagamento'
+      });
+    }
+  });
+  
   // Rota para obter informações de pagamento específicas por ID
   app.get('/api/payments/:id', async (req, res) => {
     try {
